@@ -34,7 +34,7 @@ const MainLayout = (props) => {
       }
   }
 
-  const onClickHeaderLink = (event) => {
+  const onClickHashScrollTo = (event) => {
     event.preventDefault();
     let hash = event.target.hash
     setCurrentPage(hash)
@@ -62,6 +62,10 @@ const MainLayout = (props) => {
     } else {
       window.addEventListener('load', handleLoad, false);
     }
+
+    window.onbeforeunload = function () {
+      window.scrollTo(0, 0);
+    }
     
     // Destropying
     return () => {
@@ -70,14 +74,25 @@ const MainLayout = (props) => {
     };
   }, []);
 
+
+  const childrenWithProps = React.Children.map(children, child => {
+    // Checking isValidElement is the safe way and avoids a typescript
+    // error too.
+    if (React.isValidElement(child)) {
+      return React.cloneElement(child, { onClickHashScrollTo, createTyped });
+    }
+    return child;
+  });
+
+
   return (
     <React.Fragment>
       <main>
         <Header onHover={createTyped} 
                 onMouseOut={onLinkMouseOut}
-                onClick={onClickHeaderLink}
+                onClick={onClickHashScrollTo}
                 currentPage={currentPage} />
-          {children}
+          {childrenWithProps}
         <p ref={typedRef} className="sync-text"></p>
       </main>
       <Loader show={!showPage}></Loader>

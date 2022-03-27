@@ -11,7 +11,7 @@ import Fade from 'react-reveal/Fade';
 // footer icons
 
 
-const IndexPage = ({ children }) => {
+const IndexPage = ({ children, onClickHashScrollTo }) => {
 
   const typedRef = useRef(null)
 
@@ -45,7 +45,7 @@ const IndexPage = ({ children }) => {
                   <p>I approach problem-solving with as much patience as possible! While it's always great to instantly find the fix for a bug via Stack Overflow, there are times when that approach doesn't cut it. </p>
                   <p>It's during those times, I've found that patience with myself and others really is a virtue. And after much (oddly calm) head scratching, I'll usually find the solution to the problem with dogged persistence and perhaps some creative ingenuity.</p>
                   <p>When I work on a project, I'll also try first to understand the bigger picture, and how the nitty-gritty details all fit in; not only to provide a great UI/UX but also to provide overall value to the business' product offering and keep customers coming back.</p>
-                  <p>If this sounds like someone you want to work with, please get in touch. Currently, I'm looking for work in London, so if I've just contacted you or applied to your company, I'd love to talk with you over a (remote?) cup of coffee.</p>
+                  <p>If this sounds like someone you want to work with, please <a href="#contact" onClick={onClickHashScrollTo}>get in touch</a>. Currently, I'm looking for work in London, so if I've just contacted you or applied to your company, I'd love to talk with you over a (remote?) cup of coffee.</p>
               </div>
             
               <br />

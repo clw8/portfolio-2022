@@ -1,0 +1,74 @@
+// Generic Grid Wrapper Class
+@mixin grid-wrapper($breakpoints: null) {
+  //max-width: 100%;
+  max-width: 1660px;
+  margin: 0 auto;
+
+  width: 100%;
+  box-sizing: content-box;
+
+  @if (index($breakpoints, 'mobile') or $breakpoints == null) {
+    padding-left: $grid-o-gutter--mob;
+    padding-right: $grid-o-gutter--mob;
+    width: calc(100% - #{$grid-o-gutter--mob * 2});
+  }
+
+  @if (index($breakpoints, 'tablet-small') or $breakpoints == null) {
+    @include mq('tablet-small') {
+      padding-left: $grid-o-gutter--tab;
+      padding-right: $grid-o-gutter--tab;
+      width: calc(100% - #{$grid-o-gutter--tab * 2});
+    }
+  }
+
+  @if (index($breakpoints, 'tablet')) {
+    @include mq('tablet') {
+      padding-left: $grid-o-gutter--tab;
+      padding-right: $grid-o-gutter--tab;
+      width: calc(100% - #{$grid-o-gutter--tab * 2});
+    }
+  }
+
+  @if (index($breakpoints, 'desktop') or $breakpoints == null) {
+    @include mq('desktop') {
+      padding-left: $grid-o-gutter--dtp;
+      padding-right: $grid-o-gutter--dtp;
+      width: calc(100% - #{$grid-o-gutter--dtp * 2});
+    }
+  }
+}
+
+// example usage: @include property-with-gutter('right');
+@mixin property-with-gutter($property, $grid-gutter: 'outer', $breakpoints: null) {
+
+  @if (index($breakpoints, 'mobile') or $breakpoints == null) {
+    #{$property}: if($grid-gutter == 'outer', $grid-o-gutter--mob, $grid-i-gutter--mob);
+  }
+
+  @if (index($breakpoints, 'tablet') or index($breakpoints, 'tablet-small') or $breakpoints == null) {
+    @include mq('tablet-small') {
+      #{$property}: if($grid-gutter == 'outer', $grid-o-gutter--tab, $grid-i-gutter--tab);
+    }
+  }
+
+  @if (index($breakpoints, 'desktop') or $breakpoints == null) {
+    @include mq('desktop') {
+      #{$property}: if($grid-gutter == 'outer', $grid-o-gutter--dtp, $grid-i-gutter--dtp);
+    }
+  }
+}
+
+@mixin image-fit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    height: auto;
+    min-height: 100%;
+  }
+}

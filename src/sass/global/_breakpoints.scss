@@ -1,0 +1,30 @@
+$breakpoints: (
+        'mobile-med': 375px,
+        'tablet-small': 481px,
+        'tablet': 721px,
+        'desktop': 1081px,
+        'desktop-mid': 1301px
+);
+
+
+@mixin mq($min-width, $max-width: null) {
+  @if ($max-width == null and $min-width) {
+    $min-width: if( map-has-key($breakpoints, $min-width), map-get($breakpoints, $min-width), $min-width);
+    @media only screen and (min-width: $min-width) {
+      @content;
+    }
+  } @else if ($min-width == null and $max-width) {
+    $max-width: if( map-has-key($breakpoints, $max-width), map-get($breakpoints, $max-width) - 1px, $max-width);
+    @media only screen and (max-width: $max-width) {
+      @content;
+    }
+  } @else {
+    $min-width: if( map-has-key($breakpoints, $min-width), map-get($breakpoints, $min-width), $min-width);
+    $max-width: if( map-has-key($breakpoints, $max-width), map-get($breakpoints, $max-width) - 1px, $max-width);
+    @media only screen and (min-width: $min-width) and (max-width: $max-width) {
+      @content;
+    }
+  }
+}
+
+// Additional Breakpoints (e. g. $breakpoint-height-iPhoneX) should be defined here as variables

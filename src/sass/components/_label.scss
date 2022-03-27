@@ -1,0 +1,19 @@
+
+.label {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: $grey-mid;
+  text-transform: uppercase;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: default;
+
+  &--input {
+    margin-bottom: 1rem;
+  }
+
+  &--error {
+    //
+  }
+}

@@ -1,0 +1,35 @@
+header {
+  @include grid-wrapper;
+  // height: var(--nav-height);
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding-top: 1.5rem;
+  padding-bottom: 2rem;
+}
+
+nav {
+  // height: var(--nav-height);
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 12px 2rem 24px;
+
+  @include mq('tablet') {
+    padding: 12px 2rem 28px;
+  }
+
+  a {
+    margin-right: 1.5rem;
+    padding: .5rem 0.5rem;
+    color: $color-secondary;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .active {
+    color: rgb(236, 55, 55);
+  }
+}

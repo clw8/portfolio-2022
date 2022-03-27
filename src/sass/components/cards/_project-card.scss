@@ -1,0 +1,54 @@
+.project-card {
+    position: relative;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    
+    @include mq("tablet") {
+        width: grid-el-tab(6);
+        
+        &:nth-of-type(odd) {
+            margin-bottom: 0;
+            margin-right: $grid-i-gutter--tab;
+        }
+
+        &:nth-of-type(even) {
+            margin-top: 3.5rem;
+            margin-bottom: 2rem;
+        }
+    
+        &:nth-child(2) {
+            // classninjas card..
+            margin-bottom: 0.5rem;
+        }
+    }
+
+    @include mq("desktop") {
+        width: grid-el-dtp(6);
+
+        &:nth-of-type(odd) {
+            margin-right: $grid-i-gutter--dtp;
+        }
+    }
+
+ 
+    &__top {
+        position: relative;
+        display: flex;
+        video,
+        img {
+            width: 100%;
+            object-fit: cover;
+            border-radius: 3px;
+            box-shadow: 7px 7px 40px -10px rgb(0 0 0 / 16%);
+        }
+    }
+
+    &__bottom {
+        padding-top: 1rem;
+    }
+
+    &__container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}

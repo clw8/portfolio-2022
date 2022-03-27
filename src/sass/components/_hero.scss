@@ -1,0 +1,5 @@
+.hero {
+  width: 100%;
+  max-height: calc(100vh - var(--nav-height));
+  object-fit: cover;
+}

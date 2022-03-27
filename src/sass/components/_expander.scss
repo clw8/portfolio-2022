@@ -1,0 +1,54 @@
+.expander {
+  position: relative;
+  width: 100%;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+
+  &--on-dark {
+    color: $white;
+    border-bottom-color: $grey-mid;
+  }
+
+  &__header {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    padding-left: 3.5rem; // 1.5 for the width of the icon, 2 for the spacing between icon and text
+
+    &:hover,
+    & *:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__icon {
+    height: 1.5rem;
+    width: 1.5rem;
+    position: absolute;
+    left: 5px;
+    top: 1.5rem; // the padding-top of the &__header class
+    transform: translateX(0%);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  &__content {
+    width: 100%;
+    transition: max-height .32s ease-in;
+    overflow: hidden;
+
+    &__inner {
+      width: 100%;
+      padding-bottom: 1.5rem;
+      padding-left: 3.5rem; // same as the padding-left for the &__header
+
+      p {
+        cursor: unset;
+      }
+    }
+  }
+}

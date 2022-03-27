@@ -1,0 +1,118 @@
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 1rem 1.5rem;
+  outline: none;
+  border: 0;
+  user-select: none;
+
+  &:hover,
+  &:focus {
+    &::before {
+      box-shadow: $shadow-button-hover;
+      opacity: .8;
+      transition: box-shadow .24s linear;
+    }
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 4px;
+    right: 4px;
+    bottom: 0;
+    box-shadow: $shadow-button;
+    opacity: .66;
+    transition: box-shadow .4s ease;
+    z-index: -1;
+  }
+
+  &::after {
+    content: '';
+    border-radius: $border-radius;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: -1;
+  }
+
+  &:focus {
+    &::after {
+      border: 4px solid $black-trans;
+      transition: border .16s linear;
+    }
+  }
+
+  &__no-style {
+    color: $color-primary;
+    @include font-primary;
+    background: $white;
+    text-transform: uppercase;
+
+    &::after, &::before {
+      content: unset;
+    }
+
+    &:hover,
+    &:focus {
+      &::after {
+        box-shadow: none;
+      }
+    }
+  }
+
+  &__primary {
+    color: $white;
+    text-transform: uppercase;
+
+    &::after {
+      background: $color-primary;
+    }
+  }
+
+  &__disabled {
+    border: 0;
+    color: $white;
+    cursor: default;
+
+    &:after {
+      background: $grey-light;
+    }
+
+    &::before {
+      content: unset;
+    }
+
+    &:hover {
+      transform: unset;
+    }
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    margin-left: 0.5rem;
+  }
+}
+
+.btn-container {
+  display: flex;
+  width: 100%;
+  flex-grow: 1;
+  align-items: center;
+
+  &--space {
+    justify-content: space-between;
+  }
+
+  .button {
+    &:not(:first-child) {
+      @include property-with-gutter('margin-left', 'inner');
+    }
+  }
+}

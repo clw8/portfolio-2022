@@ -1,0 +1,78 @@
+$bottom: 1.5rem;
+
+.toast {
+  position: fixed;
+  z-index: z('toast');
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: $bottom;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-radius: $border-radius;
+  color: $black;
+  box-shadow: 0px -2px 6px rgba(0,0,0,0.1);
+  background-color: $white;
+  transform: translateY(100%) translateY($bottom);
+  width: calc(100% - #{$grid-o-gutter--mob * 2});
+  margin: 0 $grid-o-gutter--mob;
+
+  @include mq('tablet-small') {
+    width: calc(100% - #{$grid-o-gutter--tab * 2});
+    margin: 0 $grid-o-gutter--tab;
+  }
+
+  @include mq('desktop') {
+    width: calc(100% - #{$grid-o-gutter--dtp * 2});
+    margin: 0 $grid-o-gutter--dtp;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:active {
+    opacity: 0.94;
+  }
+
+  &__text {
+    align-items: center;
+    font-size: 13px;
+    line-height: 158%;
+    color: $white;
+
+    @include mq('tablet-small') {
+      font-size: 14px;
+    }
+
+  }
+}
+
+.toast-transition {
+  &-enter {
+    opacity: 0;
+    transform: translateY(100%) translateY($bottom);
+
+    &-active {
+      transition: opacity .24s ease, transform .24s ease;
+    }
+
+    &-active,
+    &-done {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  &-exit {
+    transition: transform .16s ease;
+
+    &-active {
+      transition: transform .16s ease;
+    }
+
+    &-done {
+      transform: translateY(100%) translateY($bottom);
+    }
+  }
+}

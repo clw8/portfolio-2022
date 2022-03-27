@@ -1,0 +1,112 @@
+@keyframes bounce {
+  0%   { transform: translateY(2px); }
+  50%  { transform: translateY(-2px); }
+  100% { transform: translateY(2px); }
+}
+
+.content {
+  @include grid-wrapper;
+  padding-bottom: $size-m;
+
+  &__section {
+    padding: 2rem 6rem;
+
+    &--border {
+      position: relative;
+      
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 6rem;
+        right: 6rem;
+        height: 1px;
+        background: rgba(0,0,0,0.1);
+      }
+
+    }
+  }
+
+  &__above-fold {
+    min-height: calc(100vh - var(--nav-height) - 54px);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+
+    .scroll-p {
+      text-align: center;
+      opacity: 0.6;
+      margin-right: 1.5rem;
+      padding-bottom: 0;
+      font-size: 12px;
+    }
+
+    svg {
+      opacity: 0.5;
+      animation-name: bounce;
+      animation-timing-function: ease;
+      animation-iteration-count: infinite;
+      animation-duration: 2s;
+    }
+  }
+
+  &__flex {
+    display: flex;
+    justify-content: center;
+
+    p {
+      text-align: center;
+    }
+  }
+
+  // $separator-width: 1rem;
+  // &__left {
+  //   width: 50%;
+  //   min-height: calc(100vh - var(--nav-height) - 2rem);
+  //   position: relative;
+  //   border-right: 1px solid rgba(0, 0, 0, 0.2);
+  //   padding-right: $separator-width;
+    
+  //   box-sizing: content-box;
+    
+  //   &__inner {
+  //     width: 100%;
+  //     padding: 2.5rem 2rem;
+  //     min-height: calc(100vh - var(--nav-height) - 2rem);
+  //     background: rgb(1,0,15);
+  //     background: linear-gradient(90deg, rgba(1,0,15,1) 0%, rgba(0,0,15,1) 35%, rgba(1,8,9,1) 100%);
+  //     border-radius: 3px;
+  //   }
+
+  //   p {
+  //     color: $white;
+  //     user-select: none;
+  //     // font-size: 2rem;
+  //     @extend h1;
+  //   }
+
+    // svg {
+    //   position: absolute;
+    //   transform-origin: top right;
+    //   transform: rotate( -90deg);
+    //   top: 0;
+    //   right: 0; // fallback
+    //   right: calc((100vh - var(--nav-height)) / 1680 * 40); // viewbox of svg is 1680 by 40
+    //   width: calc(100vh - var(--nav-height));
+    // }
+  // }
+
+  // &__right {
+  //   width: calc(50% - #{$separator-width});
+  //   padding: 2.5rem 2rem;
+
+  //   p {
+  //     color: $paragraph-color;
+  //   }
+  // }
+}
+
+.footer-image {
+  width: 100%;
+}

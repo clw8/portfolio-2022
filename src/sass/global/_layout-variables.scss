@@ -1,0 +1,50 @@
+// Sizing Variables
+
+$size-xxxs: .5rem;
+$size-xxs: .75rem;
+$size-xs: 1rem;
+$size-base: 1rem;
+$size-s: 1.5rem;
+$size-m: 2rem;
+$size-l: 3rem;
+$size-xl: 4rem;
+$size-xxl: 8rem;
+$size-xxxl: 16rem;
+
+// Grid Variables
+
+$grid-o-gutter--mob: 1rem;
+$grid-o-gutter--tab: 2.5rem;
+$grid-o-gutter--dtp: 5.5%;
+
+$grid-columns--mob: 12;
+$grid-columns--tab: 12;
+$grid-columns--dtp: 12;
+
+$grid-i-gutter--mob: 1rem;
+$grid-i-gutter--tab: 1.5rem;
+$grid-i-gutter--dtp: 1.5rem;
+
+// UI Variables
+
+$border-radius: .5rem;
+
+// z-index hierarchy function
+// https://codepen.io/okay_alex/pen/xBVoxV
+@function z($name) {
+  @if index($z-indexes, $name) {
+    @return (length($z-indexes) - index($z-indexes, $name)) + 1;
+  } @else {
+    @return null;
+  }
+}
+
+$z-indexes: (
+        'modal',
+        'logo',
+        'nav',
+        'loader',
+        'action',
+        'content',
+        'bg'
+);

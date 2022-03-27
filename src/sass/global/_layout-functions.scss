@@ -1,0 +1,97 @@
+@function fixed($number) {
+  @return ceil($number * 100) / 100
+}
+
+@function grid-el-mob($cols, $include-gutter: false, $mod: false, $useAbsoluteValues: false) {
+  $width: if($useAbsoluteValues, calc(100vw - #{2 * $grid-o-gutter--mob}), 100%);
+  @if $mod {
+    @return calc((#{$width} / #{fixed($grid-columns--mob / $cols)}) - #{fixed(
+    $grid-i-gutter--mob *  (1 - (1 / ($grid-columns--mob / $cols)))
+      - if($include-gutter, $grid-i-gutter--mob, $grid-i-gutter--mob * 0)
+    )} + #{$mod});
+  } @else {
+    @return calc((#{$width} / #{fixed($grid-columns--mob / $cols)}) - #{fixed(
+    $grid-i-gutter--mob *  (1 - (1 / ($grid-columns--mob / $cols)))
+      - if($include-gutter, $grid-i-gutter--mob, $grid-i-gutter--mob * 0)
+    )});
+  }
+}
+
+@function grid-el-tab($cols, $include-gutter: false, $mod: false, $useAbsoluteValues: false) {
+  $width: if($useAbsoluteValues, calc(100vw - #{2 * $grid-o-gutter--tab}), 100%);
+  @if $mod {
+    @return calc((#{$width} / #{fixed($grid-columns--tab / $cols)}) - #{fixed(
+    $grid-i-gutter--tab * (1 - (1 / ($grid-columns--tab / $cols)))
+      - if($include-gutter, $grid-i-gutter--tab, $grid-i-gutter--tab * 0)
+    )} + #{$mod});
+  } @else {
+    @return calc((#{$width} / #{fixed($grid-columns--tab / $cols)}) - #{fixed(
+    $grid-i-gutter--tab * (1 - (1 / ($grid-columns--tab / $cols)))
+      - if($include-gutter, $grid-i-gutter--tab, $grid-i-gutter--tab * 0)
+    )});
+  }
+}
+
+@function grid-el-dtp($cols, $include-gutter: false, $mod: false, $useAbsoluteValues: false) {
+  $width: if($useAbsoluteValues, min(calc(100vw - #{2 * $grid-o-gutter--dtp}), 1660px), 100%);
+  @if $mod {
+    @return calc((#{$width} / #{fixed($grid-columns--dtp / $cols)}) - #{fixed(
+    $grid-i-gutter--dtp *  (1 - (1 / ($grid-columns--dtp / $cols)))
+      - if($include-gutter, $grid-i-gutter--dtp, $grid-i-gutter--dtp * 0)
+    )} + #{$mod});
+  } @else {
+    @return calc((#{$width} / #{fixed($grid-columns--dtp / $cols)}) - #{fixed(
+    $grid-i-gutter--dtp *  (1 - (1 / ($grid-columns--dtp / $cols)))
+      - if($include-gutter, $grid-i-gutter--dtp, $grid-i-gutter--dtp * 0)
+    )});
+  }
+}
+
+// only use if the element is nested within another
+@function grid-el-mob-child($cols, $parent-cols, $include-gutter: false, $mod: false) {
+  $cols-adjusted: $cols * $grid-columns--mob / $parent-cols;
+
+  @if $mod {
+    @return calc((100% / #{fixed($grid-columns--mob / $cols-adjusted)}) - #{fixed(
+    $grid-i-gutter--mob *  (1 - (1 / ($grid-columns--mob / $cols-adjusted)))
+      - if($include-gutter, $grid-i-gutter--mob, $grid-i-gutter--mob * 0)
+    )} + #{$mod});
+  } @else {
+    @return calc((100% / #{fixed($grid-columns--mob / $cols-adjusted)}) - #{fixed(
+    $grid-i-gutter--mob *  (1 - (1 / ($grid-columns--mob / $cols-adjusted)))
+      - if($include-gutter, $grid-i-gutter--mob, $grid-i-gutter--mob * 0)
+    )});
+  }
+}
+
+@function grid-el-tab-child($cols, $parent-cols, $include-gutter: false, $mod: false) {
+  $cols-adjusted: $cols * $grid-columns--tab / $parent-cols;
+
+  @if $mod {
+    @return calc((100% / #{fixed($grid-columns--tab / $cols-adjusted)}) - #{fixed(
+    $grid-i-gutter--tab * (1 - (1 / ($grid-columns--tab / $cols-adjusted)))
+      - if($include-gutter, $grid-i-gutter--tab, $grid-i-gutter--tab * 0)
+    )} + #{$mod});
+  } @else {
+    @return calc((100% / #{fixed($grid-columns--tab / $cols-adjusted)}) - #{fixed(
+    $grid-i-gutter--tab * (1 - (1 / ($grid-columns--tab / $cols-adjusted)))
+      - if($include-gutter, $grid-i-gutter--tab, $grid-i-gutter--tab * 0)
+    )});
+  }
+}
+
+@function grid-el-dtp-child($cols, $parent-cols, $include-gutter: false, $mod: false) {
+  $cols-adjusted: $cols * $grid-columns--dtp / $parent-cols;
+
+  @if $mod {
+    @return calc((100% / #{fixed($grid-columns--dtp / $cols-adjusted)}) - #{fixed(
+    $grid-i-gutter--dtp *  (1 - (1 / ($grid-columns--dtp / $cols-adjusted)))
+      - if($include-gutter, $grid-i-gutter--dtp, $grid-i-gutter--dtp * 0)
+    )} + #{$mod});
+  } @else {
+    @return calc((100% / #{fixed($grid-columns--dtp / $cols-adjusted)}) - #{fixed(
+    $grid-i-gutter--dtp *  (1 - (1 / ($grid-columns--dtp / $cols-adjusted)))
+      - if($include-gutter, $grid-i-gutter--dtp, $grid-i-gutter--dtp * 0)
+    )});
+  }
+}

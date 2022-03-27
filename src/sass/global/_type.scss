@@ -1,0 +1,148 @@
+// Fontface Import
+
+@mixin font-primary {
+  font-family: 'Roboto+Slab', sans-serif;
+  font-weight: 500;
+}
+
+@mixin font-secondary {
+  font-family: 'Roboto+Slab', sans-serif;
+  font-weight: 400;
+}
+
+@mixin font-secondary-bold {
+  font-family: 'Roboto+Slab', sans-serif;
+}
+
+html {
+  @include font-secondary;
+  font-size: 16px;
+  color: $color-secondary;
+}
+
+button,
+input,
+textarea,
+li,
+a {
+  font-family: inherit;
+  -webkit-text-size-adjust: none;
+}
+
+h1,
+.h1-container span,
+h2,
+h3,
+h4 {
+  cursor: default;
+}
+
+h1,
+.h1-container span {
+  @include font-primary;
+  font-size: 2rem;
+  line-height: 2.5rem;
+  letter-spacing: -0.04rem;
+
+  @include mq('tablet-small') {
+    line-height: 135%;
+    font-size: 2.5rem;
+    letter-spacing: -0.05rem;
+  }
+
+  @include mq('desktop') {
+    font-size: 3rem;
+  }
+}
+
+.h1-container {
+  height: 54px;
+}
+
+h2 {
+  @include font-primary;
+  font-size: 1.5rem;
+  line-height: 1.75rem;
+  letter-spacing: -0.04rem;
+  padding-bottom: 2rem;
+
+  @include mq('tablet-small') {
+    font-size: 2rem;
+    line-height: 2.25rem;
+  }
+}
+
+h3 {
+  @include font-primary;
+  font-size: 1rem;
+  line-height: 150%;
+
+  @include mq('tablet-small') {
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    letter-spacing: -0.02rem;
+  }
+}
+
+p {
+  line-height: 1.5rem;
+  -webkit-text-size-adjust: none;
+  padding-bottom: 1rem;
+}
+
+input,
+textarea {
+  font-size: 1rem;
+  @include font-secondary;
+  outline: none;
+
+  &::placeholder {
+    user-select: none;
+  }
+}
+
+button {
+  line-height: 100%;
+  white-space: nowrap;
+  @include font-secondary;
+}
+
+a {
+  outline: none;
+  line-height: 100%;
+  color: $color-primary;
+}
+
+strong {
+  @include font-secondary-bold;
+}
+
+li {
+  margin-bottom: .8rem;
+  margin-left: 1rem;
+  font-size: 1rem;
+  line-height: 160%;
+}
+
+em {
+  font-style: italic;
+}
+
+textarea {
+  min-height: 6rem;
+}
+
+label {
+  display: block;
+  font-family: inherit;
+}
+
+%text-truncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.highlight {
+  color: $color-primary;
+}

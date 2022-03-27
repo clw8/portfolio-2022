@@ -1,0 +1,18 @@
+.mb {
+  &__xs {
+    margin-bottom: $size-xs;
+  }
+
+  &__m {
+    margin-bottom: $size-m;
+  }
+}
+
+.page {
+  min-height: calc(100vh - var(--footer-height));
+  padding-top: var(--nav-height);
+}
+
+.content {
+  @include grid-wrapper;
+}

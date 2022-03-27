@@ -1,0 +1,31 @@
+.input__container {
+  position: relative;
+}
+
+.input,
+.textarea {
+  outline: none;
+  border: 1px solid $grey-light;
+  border-radius: $border-radius;
+  background: none;
+  color: $color-secondary;
+  padding: 1.25rem 1rem;
+  width: 100%;
+
+  &:focus {
+    border: 1px solid $color-secondary;
+    outline: none;
+  }
+
+  &--error {
+    //
+  }
+
+  &--disabled {
+    //
+  }
+}
+
+.input {
+  height: 4rem;
+}

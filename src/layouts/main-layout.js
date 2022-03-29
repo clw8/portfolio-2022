@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react"
 import { Header, Loader } from "../components"
 import Typed from 'typed.js';
+import ProfileImage from "../images/main-image.jpeg"
 
 const typedJsStrings = {
   home: "",
@@ -8,6 +9,9 @@ const typedJsStrings = {
   "#projects": "Here's what I've done.",
   "#contact": "Fancy a chat?"
 }
+
+const preloadImages = []
+let preloadedImagesCount = 0
 
 const MainLayout = (props) => {
   const {children, location} = props;
@@ -37,6 +41,7 @@ const MainLayout = (props) => {
   const onClickHashScrollTo = (event) => {
     event.preventDefault();
     let hash = event.target.hash
+    console.log(hash, event.target)
     setCurrentPage(hash)
     if (hash === "/") {
       document.body.scrollIntoView(true);
@@ -51,7 +56,13 @@ const MainLayout = (props) => {
   }
 
   const handleLoad = () => {
-    setShowPage(true)
+    if (preloadedImagesCount === preloadImages.length) {
+      setShowPage(true)
+    }
+  }
+
+  const checkPreloadedImages = () => {
+    
   }
 
   useEffect(() => {
@@ -66,10 +77,19 @@ const MainLayout = (props) => {
     window.onbeforeunload = function () {
       window.scrollTo(0, 0);
     }
+
+    const profilePicImage = new Image
+    profilePicImage.src = ProfileImage
+    preloadImages.push(profilePicImage)
+
+    preloadImages.forEach(image => {
+      if(image.complete) preloadedImagesCount++
+      else image.onload = () => preloadedImagesCount++
+    })
     
     // Destropying
     return () => {
-      typedJsString.destroy();
+      typedJsString && typedJsString.destroy();
       window.removeEventListener('load', handleLoad);
     };
   }, []);
@@ -79,7 +99,7 @@ const MainLayout = (props) => {
     // Checking isValidElement is the safe way and avoids a typescript
     // error too.
     if (React.isValidElement(child)) {
-      return React.cloneElement(child, { onClickHashScrollTo, createTyped });
+      return React.cloneElement(child, { onClickHashScrollTo, createTyped, show: showPage });
     }
     return child;
   });
@@ -91,7 +111,8 @@ const MainLayout = (props) => {
         <Header onHover={createTyped} 
                 onMouseOut={onLinkMouseOut}
                 onClick={onClickHashScrollTo}
-                currentPage={currentPage} />
+                currentPage={currentPage}
+                show={showPage} />
           {childrenWithProps}
         <p ref={typedRef} className="sync-text"></p>
       </main>

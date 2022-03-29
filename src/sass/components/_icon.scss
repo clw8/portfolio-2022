@@ -1,0 +1,18 @@
+.icon-flex {
+    width: 1.25rem;
+    height: 1.25rem;
+    opacity: 0.4;
+    cursor: pointer;
+    
+    &:not(last-child) {
+        margin-right: 1rem;
+    }
+
+    &:hover {
+        opacity: 0.8;
+    }
+
+    &__container {
+        display: flex;
+    }
+}

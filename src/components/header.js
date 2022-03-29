@@ -2,12 +2,14 @@ import * as React from "react"
 // import { Link } from "gatsby"
 import ProfileImage from "../images/main-image.jpeg"
 import Fade from 'react-reveal/Fade';
+import ChrisResumePDF from "../images/Christopher_Walsh_CV.pdf";
+
 
 const Header = (props) => {
-  const { onHover, onMouseOut, onClick } = props
+  const { onHover, onMouseOut, onClick, show } = props
 
   return (
-    <Fade duration={2000} delay={1200}>
+    <Fade duration={2000} delay={1200} when={show}>
       <header>
           <div className="profile-image">
               <img src={ProfileImage} 
@@ -25,6 +27,9 @@ const Header = (props) => {
             onClick={onClick}
             onMouseEnter={(event) => onHover(event.target.hash)} 
             onMouseOut={onMouseOut}>Projects</a>
+          <a href={ChrisResumePDF}
+          onMouseEnter={(event) => onHover(event.target.hash)} 
+          onMouseOut={onMouseOut}>Resume</a>
           <a href="#contact"
             onClick={onClick}
             onMouseEnter={(event) => onHover(event.target.hash)} 

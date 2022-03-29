@@ -25,6 +25,10 @@ label {
   user-select: none;
 }
 
+svg {
+  pointer-events: none;
+}
+
 // hide arrows on number inputs
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

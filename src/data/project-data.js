@@ -10,13 +10,13 @@ const projectData = [
     image: RedBullShowCase,
     header: "Red Bull",
     tag: "video",
-    text: "Done stuff"
+    text: "Having fun with music and music licensing"
   },
   {
     image: ClassNinjas,
     header: "ClassNinjas",
     tag: "img",
-    text: "Done stuff"
+    text: "Shurikens and "
   },
   {
     image: SarahShowcase,

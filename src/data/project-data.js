@@ -16,32 +16,31 @@ const projectData = [
     image: ClassNinjas,
     header: "ClassNinjas",
     tag: "img",
-    text: "Shurikens and "
+    text: "Learning math with shurikens and time-travel"
   },
   {
     image: SarahShowcase,
     header: "Sarah Houben Portfolio",
     tag: "video",
-    text: "Done stuff"
+    text: "Photography portfolio built with an experimental framework"
   },
   {
     image: NeohShowCase,
     header: "NEOH",
     tag: "video",
-    text: "Done stuff"
+    text: "Full-snack development"
   },
-
   {
     image: HiShareThatShowcase,
     header: "hi!share.that",
     tag: "img",
-    text: "Done stuff"
+    text: "Clicks and conversions: performance-based influencer marketing"
   },
   {
     image: RikaShowCase,
     header: "Soseisoudou Online Store",
     tag: "video",
-    text: "Done stuff"
+    text: "Beautiful felt-wool clothing made in Hokkaido (Japan)"
   },
 ]
 

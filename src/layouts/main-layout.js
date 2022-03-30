@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react"
 import { Header, Loader } from "../components"
 import Typed from 'typed.js';
 import ProfileImage from "../images/main-image.jpeg"
+import Reveal from "react-reveal"
+import { useModalTransition } from "../hooks";
 
 const typedJsStrings = {
   home: "",
@@ -16,9 +18,9 @@ let preloadedImagesCount = 0
 const MainLayout = (props) => {
   const {children, location} = props;
   const [typedJsString, setTypedJsString] = useState(null)
-  const [currentPage, setCurrentPage] = useState("home")
-  const [showPage, setShowPage] = useState(false)
+  const [showPageFirstLoad, setShowPageFirstLoad] = useState(false)
   const typedRef = useRef(null)
+
 
   const createTyped = (pageName, delay = 0) => {
       if( typedJsString ) {
@@ -38,31 +40,14 @@ const MainLayout = (props) => {
       }
   }
 
-  const onClickHashScrollTo = (event) => {
-    event.preventDefault();
-    let hash = event.target.hash
-    console.log(hash, event.target)
-    setCurrentPage(hash)
-    if (hash === "/") {
-      document.body.scrollIntoView(true);
-    } else {
-      document.querySelector(hash).scrollIntoView({block:"start", behavior:"smooth"})
-    }
-    
-  }
-
   const onLinkMouseOut = (event) => {
       createTyped("home")
   }
 
   const handleLoad = () => {
     if (preloadedImagesCount === preloadImages.length) {
-      setShowPage(true)
+      setShowPageFirstLoad(true)
     }
-  }
-
-  const checkPreloadedImages = () => {
-    
   }
 
   useEffect(() => {
@@ -99,27 +84,23 @@ const MainLayout = (props) => {
     // Checking isValidElement is the safe way and avoids a typescript
     // error too.
     if (React.isValidElement(child)) {
-      return React.cloneElement(child, { onClickHashScrollTo, createTyped, show: showPage });
+      return React.cloneElement(child, { createTyped, show: showPageFirstLoad });
     }
     return child;
   });
 
-
   return (
-    <React.Fragment>
-      <main>
-        <Header onHover={createTyped} 
-                onMouseOut={onLinkMouseOut}
-                onClick={onClickHashScrollTo}
-                currentPage={currentPage}
-                show={showPage} />
-          {childrenWithProps}
-        <p ref={typedRef} className="sync-text"></p>
-      </main>
-      <Loader show={!showPage}></Loader>
-    </React.Fragment>
+      <div className="wrapper">
+         
+            <Header onHover={createTyped}
+                    onMouseOut={onLinkMouseOut}
+                    show={showPageFirstLoad} />
+              {childrenWithProps}
+            <p ref={typedRef} className="sync-text"></p>
+            <Loader show={!showPageFirstLoad}></Loader>
+      
+      </div>
   )
-  
 }
 
 export default MainLayout

@@ -4,6 +4,43 @@
   100% { transform: translateY(2px); }
 }
 
+@keyframes contentHideAnimation {
+  from {
+      transform: translateX(100%)
+  }
+
+  to {
+      transform: translateX(0);
+  }
+}
+
+.wrapper {
+  position: relative;
+  overflow: hidden;
+
+  &__inner {
+    transition: transform 1s ease;
+    transform: translateX(0%);
+
+    &__leave {
+      transform: translateX(-100%)
+
+      // animation-name: contentHiddenAnimation;
+      // animation-timing-function: ease;
+      // animation-duration: 1s;
+      // animation-direction: reverse;
+    }
+
+    &__enter {
+      transform: translateX(0%)
+
+      // animation-name: contentHiddenAnimation;
+      // animation-timing-function: ease;
+      // animation-duration: 1s;
+    }
+  }
+}
+
 .content {
   @include grid-wrapper;
   padding-bottom: $size-m;
@@ -30,10 +67,27 @@
         content: "";
         position: absolute;
         bottom: 0;
-        left: 6rem;
-        right: 6rem;
+        left: 1rem;
+        right: 1rem;
         height: 1px;
         background: rgba(0,0,0,0.1);
+
+        @include mq("tablet-small") {
+          left: 2rem;
+          right: 2rem;
+        }
+
+        @include mq("tablet") {
+          left: 4rem;
+          right: 4rem;
+        }
+
+        @include mq("desktop") {
+          left: 6rem;
+          right: 6rem;
+        }
+        
+        
       }
 
     }
@@ -125,4 +179,7 @@
 
 .footer-image {
   width: 100%;
+  max-height: 66vh;
+  object-fit: cover;
+  object-position: top;
 }

@@ -16,6 +16,7 @@ const IndexPage = ({ children, show }) => {
   const { onClickHashScrollTo } = useScrollTo()
   const [projectModal, projectModalShown, toggleProjectModal] = useModal(() => "")
   const [contentShown, setContentShown] = React.useState(true)
+  const [initialContentAnimationPlayState, setInitialContentAnimationPlayState] = React.useState(false) // children must be a function
 
   const typedRef = useRef(null)
 
@@ -31,19 +32,25 @@ const IndexPage = ({ children, show }) => {
     });
   }, [])
 
-  const pageContentClass = `wrapper__inner ${contentShown ? 'wrapper__inner__enter' : 'wrapper__inner__leave'}`
+  const pageContentClass = `wrapper__inner ${contentShown ? (initialContentAnimationPlayState ? 'wrapper__inner__enter' : "") : 'wrapper__inner__leave'}`
 
   const preventScroll = () => {
-
+    document.body.style.overflow = "hidden"
   }
 
   const onProjectCardClick = (datum) => {
     toggleProjectModal(
-      () => <h3>{datum.header}</h3>
+      () => (
+        <Fragment>
+          <h2>{datum.header}</h2>
+          <div dangerouslySetInnerHTML={{__html : datum.detail_html}}></div>
+        </Fragment>
+      )
     )
 
     setContentShown(false)
-    document.body.style.overflow = "hidden"
+    preventScroll()
+    !initialContentAnimationPlayState && setInitialContentAnimationPlayState(true)
   }
 
   return (

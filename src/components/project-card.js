@@ -18,7 +18,7 @@ const ProjectCard = (props) => {
           )}
       </div>
       <div className="project-card__bottom">
-        <h3>{datum.header}</h3>
+        <h4>{datum.header}</h4>
         <p>{datum.text}</p>
       </div>
     </div>

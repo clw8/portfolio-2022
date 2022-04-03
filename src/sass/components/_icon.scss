@@ -1,8 +1,9 @@
 .icon-flex {
-    width: 1.25rem;
-    height: 1.25rem;
+    // width: 1.25rem;
+    // height: 1.25rem;
     opacity: 0.4;
     cursor: pointer;
+    display: inline-block;
     
     &:not(last-child) {
         margin-right: 1rem;
@@ -14,5 +15,34 @@
 
     &__container {
         display: flex;
+    }
+
+    &__codepen {
+        svg {
+            position: relative;
+            top: 2px;
+        }
+    }
+
+    &__store {
+        opacity: 1;
+        img {
+            height: 40px;
+        }
+    }
+
+    &__website {
+        
+        &--cn {
+            margin-top: 1rem;
+        }
+        
+        img {
+            display: inline;
+            width: 16px;
+            margin-left: 8px;
+            position: relative;
+            top: 2px;
+        }
     }
 }

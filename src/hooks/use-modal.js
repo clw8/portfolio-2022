@@ -10,7 +10,16 @@ const useModal = (children) => {
         console.warn("children must be declared in the modal as a function")
     }
 
+    const preventScroll = () => {
+        document.body.style.overflow = "hidden"
+      }
+
+    const enableScroll = () => {
+        document.body.style.overflow = ""
+      }
+
     const openModal = (children) => {
+        modalShown ? enableScroll() : preventScroll() 
         setModalShown(!modalShown)
         !initialAnimationPlayState && setInitialAnimationPlayState(true)
         
@@ -25,7 +34,9 @@ const useModal = (children) => {
     const renderModal = (
         <div className={modalClass}>
             <div className="modal__inner">
-                {modalChildren}
+                <div className="modal__content">
+                    {modalChildren}
+                </div>
             </div>
         </div>
     )

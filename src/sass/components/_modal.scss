@@ -28,14 +28,14 @@
     display: flex;
     justify-content: center;
     overflow-y: scroll;
-    padding: 3rem calc(2vw + 2rem) 2rem 2rem;
+    padding: 0 calc(2vw + 2rem) 0 2rem;
 
     @include mq("tablet-small") {
-        padding: 4rem calc(2vw + 4rem) 3rem 4rem;
+        padding: 0 calc(2vw + 4rem) 0 4rem;
     }
     
     @include mq("tablet") {
-        padding: 6rem calc(2vw + 6rem) 3rem 6rem;
+        padding: 0 calc(2vw + 6rem) 0 6rem;
     }
 
     
@@ -63,6 +63,18 @@
         @include mq("desktop") {
             max-width: 40vw;
             min-width: 400px;
+        }
+    }
+
+    &__content {
+        padding: 3rem 0 2rem 0;
+
+        @include mq("tablet-small") {
+            padding: 4rem 0 3rem 0;
+        }
+        
+        @include mq("tablet") {
+            padding: 6rem 0 3rem 0;
         }
     }
 }

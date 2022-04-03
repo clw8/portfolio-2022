@@ -16,7 +16,7 @@ const preloadImages = []
 let preloadedImagesCount = 0
 
 const MainLayout = (props) => {
-  const {children, location} = props;
+  const {children} = props;
   const [typedJsString, setTypedJsString] = useState(null)
   const [showPageFirstLoad, setShowPageFirstLoad] = useState(false)
   const typedRef = useRef(null)

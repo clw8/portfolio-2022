@@ -1,14 +1,10 @@
 import * as React from "react"
-import Reveal from 'react-reveal';
+import CloseIcon from "../images/icons/cancel.png"
 
-const useModal = (children) => {
+const useModal = (children, options = {style: {}}) => {
     const [modalShown, setModalShown] = React.useState(false)
     const [modalChildren, setModalChildren] = React.useState(children) // children must be a function
-    const [initialAnimationPlayState, setInitialAnimationPlayState] = React.useState(false) // children must be a function
-    
-    if (children && React.isValidElement) {
-        console.warn("children must be declared in the modal as a function")
-    }
+    const [animation, setAnimation] = React.useState(3)
 
     const preventScroll = () => {
         document.body.style.overflow = "hidden"
@@ -19,24 +15,35 @@ const useModal = (children) => {
       }
 
     const openModal = (children) => {
-        modalShown ? enableScroll() : preventScroll() 
-        setModalShown(!modalShown)
-        !initialAnimationPlayState && setInitialAnimationPlayState(true)
+        preventScroll() 
+        setModalShown(true)
+        setAnimation(1)
         
-        if (children) {
-            if (!React.isValidElement) console.warn("children must be declared in the modal as a function")
-            else setModalChildren(children) // children must be a function
+        if (children && React.isValidElement(children)) {
+            setModalChildren(children)
         }
     }
+    
+    const closeModal = () => {
+        setModalShown(false)
+        setAnimation(0)
+        enableScroll()
+        options.onClose && options.onClose()
+    }
 
-    const modalClass = `modal ${modalShown ? "modal__enter" : (initialAnimationPlayState ? "modal__leave" : "")}`
+    const onAnimationEnd = () => {
+        if (animation === 0) setAnimation(3)
+        else if (animation === 1) setAnimation(4)
+    }
+
 
     const renderModal = (
-        <div className={modalClass}>
+        <div className="modal" style={options.style} animation={animation} onAnimationEnd={onAnimationEnd} >
             <div className="modal__inner">
-                <div className="modal__content">
-                    {modalChildren}
+                <div className="project-modal__close"  onClick={closeModal}>
+                    <img src={CloseIcon} className="project-modal__close"  onClick={closeModal} />
                 </div>
+                {modalChildren}
             </div>
         </div>
     )
@@ -45,6 +52,7 @@ const useModal = (children) => {
         renderModal,
         modalShown,
         openModal,
+        closeModal
     ]
 }
 

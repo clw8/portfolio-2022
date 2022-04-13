@@ -30,24 +30,50 @@
     //transition: transform 1s ease;
     //transform: translateX(0%);
 
-    &__leave {
-      // transform: translateX(-100%)
+    // &__leave {
+    //   // transform: translateX(-100%)
 
-      animation-name: contentHideAnimation;
-      animation-timing-function: cubic-bezier(.28,.55,.79,1.09);
-      animation-duration: 1s;
-      animation-direction: reverse;
-      animation-fill-mode: forwards;
-    }
+    //   animation-name: contentHideAnimation;
+    //   animation-timing-function: cubic-bezier(.28,.55,.79,1.09);
+    //   animation-duration: 1s;
+    //   animation-direction: reverse;
+    //   animation-fill-mode: forwards;
+    // }
     
-    &__enter {
-      // transform: translateX(0%)
+    // &__enter {
+    //   // transform: translateX(0%)
       
+    //   animation-name: contentHideAnimation;
+    //   animation-timing-function: cubic-bezier(.21,-.09,.72,0.45);
+    //   animation-duration: 1s;
+    //   animation-fill-mode: forwards;
+    // }
+
+    &[animation="0"] {
+      //transform: translateX(0%);
+
       animation-name: contentHideAnimation;
       animation-timing-function: cubic-bezier(.21,-.09,.72,0.45);
       animation-duration: 1s;
       animation-fill-mode: forwards;
-    }
+  }
+  
+  &[animation="1"] {
+    animation-name: contentHideAnimation;
+    animation-timing-function: cubic-bezier(.28,.55,.79,1.09);
+    animation-duration: 1s;
+    animation-direction: reverse;
+    animation-fill-mode: forwards;
+  }
+
+  &[animation="3"] {
+      transform: translateX(0);
+  }
+  
+  &[animation="4"] {
+      transform: translateX(100%);
+      //transform: translateX(0);
+  }
   }
 }
 

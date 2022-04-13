@@ -28,18 +28,19 @@
     display: flex;
     justify-content: center;
     overflow-y: scroll;
-    padding: 0 calc(2vw + 2rem) 0 2rem;
 
-    @include mq("tablet-small") {
-        padding: 0 calc(2vw + 4rem) 0 4rem;
-    }
+    // padding: 0 calc(2vw + 2rem) 0 2rem;
+
+    // @include mq("tablet-small") {
+    //     padding: 0 calc(2vw + 4rem) 0 4rem;
+    // }
     
-    @include mq("tablet") {
-        padding: 0 calc(2vw + 6rem) 0 6rem;
-    }
+    // @include mq("tablet") {
+    //     padding: 0 calc(2vw + 6rem) 0 6rem;
+    // }
 
     
-    &__enter {
+    &[animation="1"] {
         //transform: translateX(0%);
 
         animation-name: modalAnimation;
@@ -48,7 +49,7 @@
         animation-fill-mode: forwards;
     }
     
-    &__leave {
+    &[animation="0"] {
         animation-name: modalAnimation;
         animation-timing-function: cubic-bezier(.28,.55,.79,1.09);
         animation-duration: 1s;
@@ -56,9 +57,19 @@
         animation-fill-mode: forwards;
     }
 
-    &__inner {
+    &[animation="4"] {
+        transform: translateX(0);
+    }
+    
+    &[animation="3"] {
+        transform: translateX(100%);
+        //transform: translateX(0);
+    }
+
+    &__text {
         width: 100%;
         max-width: 400px;
+        margin: auto;
         
         @include mq("desktop") {
             max-width: 40vw;
@@ -67,14 +78,52 @@
     }
 
     &__content {
-        padding: 3rem 0 2rem 0;
+        padding: 3rem calc(2vw + 2rem) 2rem 2rem;
 
         @include mq("tablet-small") {
-            padding: 4rem 0 3rem 0;
+            padding: 3.5rem calc(2vw + 4rem) 3rem 4rem;
         }
         
         @include mq("tablet") {
-            padding: 6rem 0 3rem 0;
+            padding: 4rem calc(2vw + 6rem) 3rem 6rem;
+        }
+    }
+
+    &__inner {
+        width: 100%;
+    }
+}
+
+
+.project-modal {
+    &__image {
+        width: 100%;
+    }
+
+    &__header {
+        padding-bottom: 0 !important;
+        text-align: center;
+    }
+
+    &__image {
+        img {
+            width: 120%;
+            position: relative;
+            right: 10%;
+            margin: 2rem 0;
+        }
+    }
+
+    &__close {
+        position: absolute;
+        top: 2rem;
+        right: 5rem;
+        width: 1rem;
+        opacity: 0.8;
+        cursor: pointer;
+
+        &:hover {
+            opacity: 1;
         }
     }
 }

@@ -15,7 +15,8 @@ import { useScrollTo } from "../hooks";
 const IndexPage = ({ children, show }) => {
   const { onClickHashScrollTo } = useScrollTo()
   const [currentModalIndex, setCurrentModalIndex] = useState(false)
-  const [initialContentAnimationPlayState, setInitialContentAnimationPlayState] = React.useState(false) // children must be a function
+ // const [initialContentAnimationPlayState, setInitialContentAnimationPlayState] = React.useState(false) // children must be a function
+  const [animation, setAnimation] = React.useState(3)
 
   const typedRef = useRef(null)
 
@@ -31,8 +32,6 @@ const IndexPage = ({ children, show }) => {
     });
   }, [])
 
-  const projectModalShown = currentModalIndex !== false
-  const pageContentClass = `wrapper__inner ${!projectModalShown ? (initialContentAnimationPlayState ? 'wrapper__inner__enter' : "") : 'wrapper__inner__leave'}`
 
   const onProjectCardClick = (datum, index) => {
     // toggleProjectModal(
@@ -45,14 +44,28 @@ const IndexPage = ({ children, show }) => {
     // )
 
     setCurrentModalIndex(index)
+    setAnimation(1)
+    //!initialContentAnimationPlayState && setInitialContentAnimationPlayState(true)
+  }
 
-    !initialContentAnimationPlayState && setInitialContentAnimationPlayState(true)
+  const onProjectModalClose = () => {
+    setAnimation(0)
+    setCurrentModalIndex(false)
+  }
+
+  //const projectModalShown = currentModalIndex !== false
+  //const pageContentClass = `wrapper__inner ${!projectModalShown ? (initialContentAnimationPlayState ? 'wrapper__inner__enter' : "") : 'wrapper__inner__leave'}`
+
+  const onAnimationEnd = () => {
+    if (animation === 0) setAnimation(3)
+    else if (animation === 1) setAnimation(4)
+
   }
 
   return (
     <Fragment>
 
-        <main className={pageContentClass}>
+        <main className="wrapper__inner" animation={animation} onAnimationEnd={onAnimationEnd}>
           <div className="content">
             <div id="typed-strings">
               <h1>Welcome.</h1>
@@ -134,7 +147,7 @@ const IndexPage = ({ children, show }) => {
                         
         </main>
 
-        {projectData.map((datum, index) => <ProjectModal show={index === currentModalIndex} datum={datum} />)}
+        {projectData.map((datum, index) => <ProjectModal show={index === currentModalIndex} datum={datum} onClose={onProjectModalClose} />)}
     </Fragment>
   )
 }

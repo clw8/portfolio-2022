@@ -56,10 +56,11 @@ const IndexPage = ({ children, show }) => {
   //const projectModalShown = currentModalIndex !== false
   //const pageContentClass = `wrapper__inner ${!projectModalShown ? (initialContentAnimationPlayState ? 'wrapper__inner__enter' : "") : 'wrapper__inner__leave'}`
 
-  const onAnimationEnd = () => {
-    if (animation === 0) setAnimation(3)
-    else if (animation === 1) setAnimation(4)
-
+  const onAnimationEnd = (e) => {
+    if(e.target.className === "wrapper__inner") {
+        if (animation === 0) setAnimation(3)
+        else if (animation === 1) setAnimation(4)
+    }
   }
 
   return (
@@ -147,7 +148,18 @@ const IndexPage = ({ children, show }) => {
                         
         </main>
 
-        {projectData.map((datum, index) => <ProjectModal show={index === currentModalIndex} datum={datum} onClose={onProjectModalClose} />)}
+        {projectData.map((datum, index) => {
+          const onLeftArrow = () => setCurrentModalIndex(index - 1)
+          const onRightArrow = () => setCurrentModalIndex(index + 1)
+          return <ProjectModal 
+                    showIndex={currentModalIndex} 
+                    modalIndex={index}
+                    lastIndex={projectData.length - 1}
+                    datum={datum} 
+                    onClose={onProjectModalClose} 
+                    onLeftArrow={onLeftArrow}
+                    onRightArrow={onRightArrow} />
+        })}
     </Fragment>
   )
 }

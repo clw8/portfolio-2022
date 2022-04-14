@@ -30,14 +30,6 @@ a {
 }
 
 h1,
-.h1-container span,
-h2,
-h3,
-h4 {
-  cursor: default;
-}
-
-h1,
 .h1-container span {
   @include font-primary;
   font-size: 2.25rem;

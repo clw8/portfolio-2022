@@ -16,6 +16,24 @@
     }
 }
 
+@keyframes modalAnimationLeft {
+    0% {
+        transform: translateX(-100%)
+    }
+
+    15% {
+        transform: translateX(-101%);
+    }
+
+    85% {
+        transform: translateX(2%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
 .modal {
     position: fixed;
     left: 0;
@@ -40,40 +58,71 @@
     // }
 
     
-    &[animation="1"] {
+    &[animation="in-right"] {
         //transform: translateX(0%);
 
         animation-name: modalAnimation;
         animation-timing-function: cubic-bezier(.21,-.09,.72,0.45); // inverse of enter's leave function
-        animation-duration: 1s;
+        animation-duration: 0.8s;
         animation-fill-mode: forwards;
     }
     
-    &[animation="0"] {
+    &[animation="out-right"] {
         animation-name: modalAnimation;
         animation-timing-function: cubic-bezier(.28,.55,.79,1.09);
-        animation-duration: 1s;
+        animation-duration: 0.8s;
         animation-direction: reverse;
         animation-fill-mode: forwards;
     }
 
-    &[animation="4"] {
+    &[animation="in-right-end"] {
         transform: translateX(0);
     }
     
-    &[animation="3"] {
+    &[animation="out-right-end"] {
         transform: translateX(100%);
+        //transform: translateX(0);
+    }
+
+    &[animation="in-left"] {
+        //transform: translateX(0%);
+
+        animation-name: modalAnimationLeft;
+        animation-timing-function: cubic-bezier(.21,-.09,.72,0.45); // inverse of enter's leave function
+        animation-duration: 0.8s;
+        animation-fill-mode: forwards;
+    }
+    
+    &[animation="out-left"] {
+        animation-name: modalAnimationLeft;
+        animation-timing-function: cubic-bezier(.28,.55,.79,1.09);
+        animation-duration: 0.8s;
+        animation-direction: reverse;
+        animation-fill-mode: forwards;
+    }
+
+    &[animation="in-left-end"] {
+        transform: translateX(0);
+    }
+    
+    &[animation="out-left-end"] {
+        transform: translateX(-100%);
         //transform: translateX(0);
     }
 
     &__text {
         width: 100%;
-        max-width: 400px;
+        max-width: 480px;
         margin: auto;
         
         @include mq("desktop") {
             max-width: 40vw;
-            min-width: 400px;
+            min-width: 480px;
+            max-width: 540px;
+        }
+
+        h3 {
+            text-align: center;
         }
     }
 
@@ -103,27 +152,79 @@
     &__header {
         padding-bottom: 0 !important;
         text-align: center;
+        padding-left: 2rem;
+        padding-right: 2rem;
     }
 
     &__image {
         img {
-            width: 120%;
+            width: 110%;
             position: relative;
-            right: 10%;
+
+            right: 5%;
             margin: 2rem 0;
+            
+            @include mq("tablet") {
+                width: 120%;
+                right: 10%;
+
+            }
         }
     }
 
     &__close {
         position: absolute;
-        top: 2rem;
-        right: 5rem;
-        width: 1rem;
+        top: 1rem;
+        right: 2rem;
         opacity: 0.8;
         cursor: pointer;
 
+        @include mq("tablet") {
+            top: 2rem;
+            right: 5rem;
+        }
+        
+        img {
+            width: .9rem;
+
+            @include mq("tablet") {
+                
+                width: 1rem;
+            }
+        }
+
         &:hover {
             opacity: 1;
+        }
+    }
+
+    &__arrow {
+        width: 1.5rem;
+        position: absolute;
+        top: 3.25rem;
+        cursor: pointer;
+        
+        @include mq("tablet-small") {
+            top: 3.75rem;
+        }
+
+        @include mq("tablet") {
+            position: sticky;
+            bottom: calc(50% - .75rem);
+            top: unset;
+        }
+
+        &--left {
+            left: 2rem;
+            transform: rotate(180deg);
+            transform-origin: center;
+        }
+
+        &--right {
+            right: 2rem;
+            @include mq("tablet") {
+                left: calc(100% - 4rem - 1.5rem);
+            }
         }
     }
 }

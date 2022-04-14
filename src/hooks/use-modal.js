@@ -1,10 +1,9 @@
 import * as React from "react"
-import CloseIcon from "../images/icons/cancel.png"
 
 const useModal = (children, options = {style: {}}) => {
     const [modalShown, setModalShown] = React.useState(false)
     const [modalChildren, setModalChildren] = React.useState(children) // children must be a function
-    const [animation, setAnimation] = React.useState(3)
+    const [animation, setAnimation] = React.useState("out-right-end")
 
     const preventScroll = () => {
         document.body.style.overflow = "hidden"
@@ -14,35 +13,36 @@ const useModal = (children, options = {style: {}}) => {
         document.body.style.overflow = ""
       }
 
-    const openModal = (children) => {
+    const openModal = (e, transitionInLeft = false, children) => {
         preventScroll() 
         setModalShown(true)
-        setAnimation(1)
+        if(transitionInLeft) setAnimation("in-left")
+        else setAnimation("in-right")
         
         if (children && React.isValidElement(children)) {
             setModalChildren(children)
         }
     }
     
-    const closeModal = () => {
+    const closeModal = (e, transitionOutLeft = false ) => {
         setModalShown(false)
-        setAnimation(0)
+        if (transitionOutLeft) setAnimation("out-left")
+        else setAnimation("out-right")
         enableScroll()
-        options.onClose && options.onClose()
     }
 
-    const onAnimationEnd = () => {
-        if (animation === 0) setAnimation(3)
-        else if (animation === 1) setAnimation(4)
+    const onAnimationEnd = (e) => {
+        if(e.target.className === "modal") {
+            if (animation === "out-right") setAnimation("out-right-end")
+            else if (animation === "out-left") setAnimation("out-left-end")
+            else if (animation === "in-right") setAnimation("in-right-end") 
+            else if (animation === "in-left") setAnimation("in-left-end") 
+        }
     }
-
 
     const renderModal = (
-        <div className="modal" style={options.style} animation={animation} onAnimationEnd={onAnimationEnd} >
+        <div className="modal" style={options.style} animation={animation} onAnimationEnd={onAnimationEnd}>
             <div className="modal__inner">
-                <div className="project-modal__close"  onClick={closeModal}>
-                    <img src={CloseIcon} className="project-modal__close"  onClick={closeModal} />
-                </div>
                 {modalChildren}
             </div>
         </div>

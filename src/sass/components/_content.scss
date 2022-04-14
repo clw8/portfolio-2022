@@ -54,14 +54,14 @@
 
       animation-name: contentHideAnimation;
       animation-timing-function: cubic-bezier(.21,-.09,.72,0.45);
-      animation-duration: 1s;
+      animation-duration: 0.8s;
       animation-fill-mode: forwards;
   }
   
   &[animation="1"] {
     animation-name: contentHideAnimation;
     animation-timing-function: cubic-bezier(.28,.55,.79,1.09);
-    animation-duration: 1s;
+    animation-duration: 0.8s;
     animation-direction: reverse;
     animation-fill-mode: forwards;
   }
@@ -82,7 +82,7 @@
   padding-bottom: $size-m;
 
   &__section {
-    padding: 2rem 1rem;
+    padding: 2rem 0rem;
 
     @include mq("tablet-small") {
       padding: 2rem 2rem;

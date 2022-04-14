@@ -14,10 +14,10 @@ nav {
   display: flex;
   justify-content: flex-end;
   flex-wrap: wrap;
-  padding: 12px 2rem 24px;
+  padding: 0px 2rem 24px;
 
   @include mq('tablet') {
-    padding: 12px 2rem 28px;
+    padding: 0px 2rem 28px;
   }
 
   a {

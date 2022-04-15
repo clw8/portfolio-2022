@@ -34,14 +34,6 @@ const IndexPage = ({ children, show }) => {
 
 
   const onProjectCardClick = (datum, index) => {
-    // toggleProjectModal(
-    //   () => (
-    //     <Fragment>
-    //       <h2>{datum.header}</h2>
-    //       {datum.detail_html}
-    //     </Fragment>
-    //   )
-    // )
 
     setCurrentModalIndex(index)
     setAnimation(1)
@@ -64,8 +56,7 @@ const IndexPage = ({ children, show }) => {
   }
 
   return (
-    <Fragment>
-
+    <div>
         <main className="wrapper__inner" animation={animation} onAnimationEnd={onAnimationEnd}>
           <div className="content">
             <div id="typed-strings">
@@ -160,7 +151,7 @@ const IndexPage = ({ children, show }) => {
                     onLeftArrow={onLeftArrow}
                     onRightArrow={onRightArrow} />
         })}
-    </Fragment>
+    </div>
   )
 }
 

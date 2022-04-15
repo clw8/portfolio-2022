@@ -27,7 +27,7 @@ const projectData = [
     tag: "video",
     text: "Having fun with music and music licensing",
     detail_html: 
-    <div>
+    <Fragment>
       <h3>The brief</h3>
       <p>Red Bull has a great number of signed artists and a plethora of hit songs, as part of the drink company's foray into the music industry. Our task was to create a platform to allow content creators to buy a license to a song, so that they can use it in their own media.</p>
       <br />
@@ -39,7 +39,7 @@ const projectData = [
       View the Red Bull Sound Supply App
         <img src={ExternalLinkIcon} />
       </a>
-    </div>
+    </Fragment>
   },
   {
     image: ClassNinjas,
@@ -49,7 +49,7 @@ const projectData = [
     tag: "img",
     text: "Learning math with shurikens and time-travel",
     detail_html: 
-      <div>
+      <Fragment>
         <h3>The brief</h3>
         <p>ClassNinjas came to us with the plan of creating a math learning app on web and mobile, with interesting math exercises and some gamification elements, to make it more accessible to the target audience (ages 11-17). In more recent times, their business has pivoted towards math tutoring.</p>
         <br />
@@ -75,7 +75,7 @@ const projectData = [
             View ClassNinja's Homepage (in German!)
               <img src={ExternalLinkIcon} />
         </a>
-      </div>
+      </Fragment>
   },
   {
     image: NeohShowCase,
@@ -85,7 +85,7 @@ const projectData = [
     tag: "video",
     text: "Full-snack development",
     detail_html: 
-    <div>
+    <Fragment>
       <h3>The brief</h3>
       <p>NEOH contacted okaybueno as a growing start-up, looking to create a flashy new website and e-commerce experience. We were all very excited to work on this project, not only because of the massive boxes of snacks that were being sent our way, but also because it was an opportunity to expand our skillset to a developing animation- and 3D-based UX experiences. We actually built two websites for NEOH (at different times in their business development), one with a 3D bar that would swap with bars of other flavours and change position depending on whether you were on the home page or the bar detail page; and another with more focus on performance, speed, usability and SEO.</p>
       <br />
@@ -104,7 +104,7 @@ const projectData = [
       NEOH's homepage
         <img src={ExternalLinkIcon} />
       </a>
-    </div>
+    </Fragment>
   },
   {
     image: HiShareThatShowcase,
@@ -114,7 +114,7 @@ const projectData = [
     tag: "img",
     text: "Clicks and conversions: performance-based influencer marketing",
     detail_html: 
-    <div>
+    <Fragment>
       <h3>The brief</h3>
       <p>hi!share.that looked to okaybueno to help them create several web apps that revolved around their business of connecting influencers and brands using contracts where the influencer gets paid X per click and X per conversion. This was the first large project I was introduced to as a junior web dev, and my main role in this was building the front-end for these apps. Later on, they also contracted okaybueno to build a mobile app (using React Native). This again was a learning experience, as I hadn't developed an app with React Native before.</p>
       <br />
@@ -131,7 +131,7 @@ const projectData = [
         </a>
         (unfortunately access to the influencer app is restricted to those with a following of 3000 or above)
       </p>
-    </div>
+    </Fragment>
   },
   {
     image: SarahShowcase,
@@ -141,7 +141,7 @@ const projectData = [
     tag: "video",
     text: "Photography portfolio built with an experimental framework",
     detail_html: 
-    <div>
+    <Fragment>
       <h3>The brief</h3>
       <p>A good friend of mine needed a website to showcase her photography and science communication background. I offered a bit of help, and voila!</p>
       <br />
@@ -156,7 +156,7 @@ const projectData = [
           Sarah's awesome website
             <img src={ExternalLinkIcon} />
       </a>
-    </div>
+    </Fragment>
   },
   {
     image: RikaShowCase,
@@ -166,7 +166,7 @@ const projectData = [
     tag: "video",
     text: "Beautiful felt-wool clothing made in Hokkaido (Japan)",
     detail_html: 
-    <div>
+    <Fragment>
       <h3>The brief</h3>
       <p>Soseisoudou is a a fashion brand of all things felt-wool made in Hokkaido and sourcing their wool using sustainable means. I was lucky enough to know the owner and as one of my first front-end dev projects, built her personal website and the Soseisoudou website using a Japanese Shopify alternative called BASE was the chosen platform by the owner. </p>
       <br />
@@ -183,7 +183,7 @@ const projectData = [
           Soseisoudou's website
             <img src={ExternalLinkIcon} />
       </a>
-    </div>
+    </Fragment>
   },
 ]
 

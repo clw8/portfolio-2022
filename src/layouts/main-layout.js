@@ -10,7 +10,7 @@ const typedJsStrings = {
   "profile": "All about this guy.",
   "#projects": "Here's what I've done.",
   "#contact": "Fancy a chat?",
-  "resume": "My CV for your perusal."
+  "resume": "A nice CV for your perusal."
 }
 
 const preloadImages = []
@@ -95,7 +95,7 @@ const MainLayout = (props) => {
         <Header onHover={createTyped}
                 onMouseOut={onLinkMouseOut}
                 show={showPageFirstLoad} />
-          {/* {childrenWithProps} */}
+          {childrenWithProps}
         <p ref={typedRef} className="sync-text"></p>
         <Loader show={!showPageFirstLoad}></Loader>
       </div>

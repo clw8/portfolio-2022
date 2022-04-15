@@ -13,7 +13,7 @@ const ProjectModal = (props) => {
         if(showIndex !== false) {
           const transitionRight = prevShowIndex !== false && showIndex < prevShowIndex
           openProjectModal(false, transitionRight, (
-            <div>
+            <Fragment>
               <div className="project-modal__close"  onClick={onCloseClick}>
                   <img src={CloseIcon}  onClick={onCloseClick} />
               </div>
@@ -35,7 +35,7 @@ const ProjectModal = (props) => {
                 <img className="project-modal__arrow project-modal__arrow--left" src={RightArrow} onClick={onLeftArrowClick}/>
               )}
               
-            </div>
+            </Fragment>
           ))
         }
       }

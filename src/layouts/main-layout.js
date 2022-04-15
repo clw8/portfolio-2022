@@ -9,7 +9,8 @@ const typedJsStrings = {
   home: "",
   "profile": "All about this guy.",
   "#projects": "Here's what I've done.",
-  "#contact": "Fancy a chat?"
+  "#contact": "Fancy a chat?",
+  "resume": "My CV for your perusal."
 }
 
 const preloadImages = []

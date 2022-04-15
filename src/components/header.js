@@ -30,7 +30,7 @@ const Header = (props) => {
             onMouseEnter={(event) => onHover(event.target.hash)} 
             onMouseOut={onMouseOut}>Projects</a>
           <a href={ChrisResumePDF}
-          onMouseEnter={(event) => onHover(event.target.hash)} 
+          onMouseEnter={(event) => onHover("resume")} 
           onMouseOut={onMouseOut}>Resume</a>
           <a href="#contact"
             onClick={onClickHashScrollTo}

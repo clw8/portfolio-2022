@@ -95,7 +95,7 @@ const MainLayout = (props) => {
         <Header onHover={createTyped}
                 onMouseOut={onLinkMouseOut}
                 show={showPageFirstLoad} />
-          {childrenWithProps}
+          {/* {childrenWithProps} */}
         <p ref={typedRef} className="sync-text"></p>
         <Loader show={!showPageFirstLoad}></Loader>
       </div>

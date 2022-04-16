@@ -20,8 +20,8 @@ const ProjectModal = (props) => {
               <div className="modal__content">
                 <div className="modal__text">
                 <h2 className="project-modal__header">{datum.header}</h2>
-                </div>
-              <img className="project-modal__image" src={datum.modalImage}/>
+              </div>
+              <img className="project-modal__image" style={datum.modalImageStyle} src={datum.modalImage}/>
                 <div className="modal__text">
                   {datum.detail_html}
                 </div>

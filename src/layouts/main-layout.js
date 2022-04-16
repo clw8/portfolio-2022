@@ -2,15 +2,15 @@ import React, { useEffect, useRef, useState } from "react"
 import { Header, Loader } from "../components"
 import Typed from 'typed.js';
 import ProfileImage from "../images/main-image.jpeg"
-import Reveal from "react-reveal"
-import { useModalTransition } from "../hooks";
+import {Helmet} from "react-helmet"
 
 const typedJsStrings = {
   home: "",
   "profile": "All about this guy.",
-  "#projects": "Here's what I've done.",
+  "#projects": "Here's what I've created.",
   "#contact": "Fancy a chat?",
-  "resume": "A nice CV for your perusal."
+  "resume": 'Two pages of supernatural expressive force saying "HIRE ME!"',
+  "mail": "Email me... I'll be nice."
 }
 
 const preloadImages = []
@@ -41,6 +41,12 @@ const MainLayout = (props) => {
       }
   }
 
+  useEffect(() => {
+    if(props.location.uri === "/") {
+      
+    }
+  }, [props.location.uri])
+
   const onLinkMouseOut = (event) => {
       createTyped("home")
   }
@@ -48,8 +54,19 @@ const MainLayout = (props) => {
   const handleLoad = () => {
     if (preloadedImagesCount === preloadImages.length) {
       setShowPageFirstLoad(true)
+    
+      //document.body.style.overflow = "auto";
     }
   }
+
+  useEffect(() => {
+    // doing this in a new useEffect so that body--no-scroll doesn't reappear on hot reload
+    if(showPageFirstLoad) {
+      setTimeout(() => {
+        document.body.classList.remove("body--no-scroll")
+      }, 1800)
+    }
+  }, [showPageFirstLoad])
 
   useEffect(() => {
     createTyped("home", 500)
@@ -92,6 +109,10 @@ const MainLayout = (props) => {
 
   return (
       <div className="wrapper" >
+        <Helmet bodyAttributes={{ class: "body body--no-scroll"}}>
+          <title>Chris' Portfolio</title>
+          <meta name="description" content="Front-end web developer or something- clw8's web portfolio. "></meta>
+        </Helmet>
         <Header onHover={createTyped}
                 onMouseOut={onLinkMouseOut}
                 show={showPageFirstLoad} />

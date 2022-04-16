@@ -16,7 +16,7 @@ const ProjectCard = (props) => {
             <img src={datum.image} />
             )}
         </div>
-        <div className="project-card__bottom">
+        <div className="project-card__bottom" style={datum.bottomTextStyle}>
           <h4>{datum.header}</h4>
           <p>{datum.text}</p>
         </div>

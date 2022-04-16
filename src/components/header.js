@@ -1,5 +1,4 @@
 import * as React from "react"
-// import { Link } from "gatsby"
 import ProfileImage from "../images/main-image.jpeg"
 import Fade from 'react-reveal/Fade';
 import ChrisResumePDF from "../images/Christopher_Walsh_CV.pdf";
@@ -21,10 +20,6 @@ const Header = (props) => {
                     onMouseOut={onMouseOut}/>
             </div>
         <nav>
-          {/* <a href="/" 
-            onClick={onClick}
-            onMouseEnter={onHover} 
-            onMouseOut={onMouseOut}>Home</a> */}
           <a href="#projects" 
             onClick={onClickHashScrollTo}
             onMouseEnter={(event) => onHover(event.target.hash)} 

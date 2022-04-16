@@ -48,6 +48,7 @@ const projectData = [
     header: "ClassNinjas",
     tag: "img",
     text: "Learning math with shurikens and time-travel",
+    bottomTextStyle: { paddingTop: 0},
     detail_html: 
       <Fragment>
         <h3>The brief</h3>
@@ -109,6 +110,7 @@ const projectData = [
   {
     image: HiShareThatShowcase,
     modalImage: HiShareThatModalShowcase,
+    modalImageStyle: { marginTop: "1.5rem", marginBottom: "1.5rem"},
     background: "#F2DAFF",
     header: "hi!share.that",
     tag: "img",
@@ -119,7 +121,7 @@ const projectData = [
       <p>hi!share.that looked to okaybueno to help them create several web apps that revolved around their business of connecting influencers and brands using contracts where the influencer gets paid X per click and X per conversion. This was the first large project I was introduced to as a junior web dev, and my main role in this was building the front-end for these apps. Later on, they also contracted okaybueno to build a mobile app (using React Native). This again was a learning experience, as I hadn't developed an app with React Native before.</p>
       <br />
       <h3>Challenges and contributions to the project</h3>
-      <div className="project-modal__image">
+      <div className="project-modal__image project-modal__image--hi">
         <img src={HiShareThatModalImage}  />
       </div>
       <p>I contributed to building the initial versions of the influencer and admin apps with Vue. The difficulty here was trying to show all the data that we had available in a neat and readable format. We ended up building a platform (web and native) for influencers that showed all the metrics of their ad performance, with smooth front-end logic to enable users to sort and filter through campaigns and tracking links, as well as well-considered components for graphs showing data for clicks and conversions. The highlight was definitely getting to develop the native app from scratch with Jésus and using Alex's awesome designs.</p>

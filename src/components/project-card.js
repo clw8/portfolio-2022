@@ -10,7 +10,7 @@ const ProjectCard = (props) => {
       <div className="project-card" onClick={onClick}>
         <div className="project-card__top">
           {datum.tag === "video" && (
-            <video muted loop autoPlay src={datum.image} type="video/webm" />
+            <video muted loop autoPlay src={datum.image} type="video/mp4" />
             )}
           {datum.tag === "img" && (
             <img src={datum.image} />

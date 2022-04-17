@@ -9,13 +9,14 @@ const ProjectModal = (props) => {
     const [projectModal, projectModalShown, openProjectModal, closeProjectModal] = useModal(false, { style: {background: datum.background}, onClose })
 
     useEffect(() => {
-      if(prevShowIndex !== showIndex && showIndex === modalIndex) {
+
+      if(!projectModalShown && prevShowIndex !== showIndex && showIndex === modalIndex) {
         if(showIndex !== false) {
           const transitionRight = prevShowIndex !== false && showIndex < prevShowIndex
           openProjectModal(false, transitionRight, (
             <Fragment>
               <div className="project-modal__close"  onClick={onCloseClick}>
-                  <img src={CloseIcon}  onClick={onCloseClick} />
+                  <img src={CloseIcon} />
               </div>
               <div className="modal__content">
                 <div className="modal__text">

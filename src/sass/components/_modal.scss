@@ -127,10 +127,10 @@
     }
 
     &__content {
-        padding: 3rem calc(2vw + 2rem) 2rem 2rem;
+        padding: 3rem calc(2vw + 2rem) 6rem 2rem;
 
         @include mq("tablet-small") {
-            padding: 3.5rem calc(2vw + 4rem) 3rem 4rem;
+            padding: 3.5rem calc(2vw + 4rem) 6rem 4rem;
         }
         
         @include mq("tablet") {
@@ -221,9 +221,8 @@
         }
 
         @include mq("tablet") {
-            position: sticky;
-            bottom: calc(50% - .75rem);
-            top: unset;
+            position: absolute;
+            top: calc(50% - .75rem);
         }
 
         &--left {

@@ -1,9 +1,15 @@
 import * as React from "react"
+// import { navigate } from "gatsby"
 
-const useModal = (children, options = {style: {}}) => {
+// TODO.. come back to this? back button to trigger going to prev modal
+//window.modalList = []
+
+const useModal = (children, options = {style: {}, onOpen: () => {}, onClose: () => {}}) => {
     const [modalShown, setModalShown] = React.useState(false)
     const [modalChildren, setModalChildren] = React.useState(children) // children must be a function
     const [animation, setAnimation] = React.useState("out-right-end")
+    // TODO.. come back to this? back button to trigger going to prev modal
+    // const [uniqueModalKey, ] = React.useState(Math.random().toString())
 
     const preventScroll = () => {
         document.body.style.overflow = "hidden"
@@ -15,6 +21,10 @@ const useModal = (children, options = {style: {}}) => {
 
     const openModal = (e, transitionInLeft = false, children) => {
         preventScroll() 
+        console.log("open")
+        options.onOpen && options.onOpen()
+        
+        
         setModalShown(true)
         if(transitionInLeft) setAnimation("in-left")
         else setAnimation("in-right")
@@ -22,14 +32,46 @@ const useModal = (children, options = {style: {}}) => {
         if (children && React.isValidElement(children)) {
             setModalChildren(children)
         }
+
+        window.history.pushState({}, "/")
+
+        // TODO.. come back to this? back button to trigger going to prev modal
+        //window.modalList.push(uniqueModalKey)
     }
     
     const closeModal = (e, transitionOutLeft = false ) => {
-        setModalShown(false)
-        if (transitionOutLeft) setAnimation("out-left")
-        else setAnimation("out-right")
-        enableScroll()
+        console.log("closeModal", modalShown)
+        //if (modalShown) { // causes bug when used in another component's render
+            enableScroll()  
+            setModalShown(false)
+            if (transitionOutLeft) setAnimation("out-left")
+            else setAnimation("out-right")
+        //}
     }
+
+    React.useEffect(() => {
+        const eventListenerPopState = () => {
+            console.log("here", window.modalList, modalShown)
+            if(modalShown) {
+                closeModal()
+                options.onClose && options.onClose()
+            } 
+
+            // TODO.. come back to this? back button to trigger going to prev modal
+            // window.modalList.pop()
+            // // trigger general modal close event (all modals must be closed)
+            // if (!window.modalList.length) {
+                //     options.onClose && options.onClose()
+            // }
+
+
+            // if (window.modalList.length && window.modalList[window.modalList.length - 1] === uniqueModalKey) {
+            //     console.log("OPEN")
+            //     openModal()
+            // }
+        }
+        window.addEventListener("popstate", eventListenerPopState)
+    }, [modalShown])
 
     const onAnimationEnd = (e) => {
         if(e.target.className === "modal") {

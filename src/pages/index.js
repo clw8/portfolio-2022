@@ -32,17 +32,7 @@ const IndexPage = ({ children, show, createTyped }) => {
     });
   }, [])
 
-
   const onProjectCardClick = (datum, index) => {
-    // toggleProjectModal(
-    //   () => (
-    //     <Fragment>
-    //       <h2>{datum.header}</h2>
-    //       {datum.detail_html}
-    //     </Fragment>
-    //   )
-    // )
-
     setCurrentModalIndex(index)
     setAnimation(1)
     //!initialContentAnimationPlayState && setInitialContentAnimationPlayState(true)
@@ -85,19 +75,16 @@ const IndexPage = ({ children, show, createTyped }) => {
                     <p>When I work on a project, I'll also try first to understand the bigger picture, and how the nitty-gritty details all fit in; not only to provide a great UI/UX but also to holistically provide value to the business' product offering and keep customers coming back.</p>
                     <p>If this sounds like someone you want to work with, please <a href="#contact" onClick={onClickHashScrollTo}>get in touch</a>. Currently, I'm looking for work in London, so if I've just contacted you or applied to your company, I'd love to talk with you over a (remote?) cup of coffee.</p>
                 </div>
-              
-                <br />
 
                 <div className="content__flex">
-
                   <p className="scroll-p">Scroll down</p>
                   <a href="#projects"
                     onClick={onClickHashScrollTo}>       
                     <svg width="15"  aria-hidden="true" focusable="false" data-prefix="fal" data-icon="arrow-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M443.5 248.5l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L241 419.9V44c0-6.6-5.4-12-12-12h-10c-6.6 0-12 5.4-12 12v375.9L28.5 241.4c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.8 4.8-12.3.1-17z"></path></svg>
                   </a>
-                  </div>
+                </div>
               </div>
-              </Fade>
+            </Fade>
 
               <div className="content__section" id="projects">
                 <Fade bottom distance={"20px"} duration={2000}>

@@ -6,17 +6,21 @@ import projectData from "../data/project-data"
 import JedAdanFooterImage from "../images/jed-adan-footer.jpg";
 import ChrisResumePDF from "../images/Christopher_Walsh_CV.pdf";
 import Fade from 'react-reveal/Fade';
-import { ProjectCard, ProjectModal } from "../components"
+import { ProjectCard, ProjectModal, ModalSequence } from "../components"
 import { useScrollTo } from "../hooks";
+import { useScrollRestoration } from "gatsby"
+
 
 // todo seo and favicon
 
 
 const IndexPage = ({ children, show, createTyped }) => {
   const { onClickHashScrollTo } = useScrollTo()
-  const [currentModalIndex, setCurrentModalIndex] = useState(false)
  // const [initialContentAnimationPlayState, setInitialContentAnimationPlayState] = React.useState(false) // children must be a function
   const [animation, setAnimation] = React.useState(3)
+  const pageScrollRestoration = useScrollRestoration("index-page");
+  const [currentModalIndex, setCurrentModalIndex] = useState(false)
+  const modalSequenceRef = useRef()
 
   const typedRef = useRef(null)
 
@@ -32,15 +36,16 @@ const IndexPage = ({ children, show, createTyped }) => {
     });
   }, [])
 
-  const onProjectCardClick = (datum, index) => {
-    setCurrentModalIndex(index)
+  const onProjectCardClick = (index) => {
     setAnimation(1)
+    modalSequenceRef.current.openSequence(index)
     //!initialContentAnimationPlayState && setInitialContentAnimationPlayState(true)
+    // setCurrentModalIndex(index)
   }
 
-  const onProjectModalClose = () => {
+  const onExitModalSequence = () => {
     setAnimation(0)
-    setCurrentModalIndex(false)
+    // setCurrentModalIndex(false)
   }
 
   //const projectModalShown = currentModalIndex !== false
@@ -56,7 +61,7 @@ const IndexPage = ({ children, show, createTyped }) => {
   return (
     <Fragment>
 
-        <main className="wrapper__inner" animation={animation} onAnimationEnd={onAnimationEnd}>
+        <main className="wrapper__inner" animation={animation} onAnimationEnd={onAnimationEnd} {...pageScrollRestoration}>
           <div className="content">
             <div id="typed-strings">
               <h1>Welcome.</h1>
@@ -77,9 +82,10 @@ const IndexPage = ({ children, show, createTyped }) => {
                 </div>
 
                 <div className="content__flex">
-                  <p className="scroll-p">Scroll down</p>
                   <a href="#projects"
+                  className="scroll-p"
                     onClick={onClickHashScrollTo}>       
+                    <p >Scroll down</p>
                     <svg width="15"  aria-hidden="true" focusable="false" data-prefix="fal" data-icon="arrow-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M443.5 248.5l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L241 419.9V44c0-6.6-5.4-12-12-12h-10c-6.6 0-12 5.4-12 12v375.9L28.5 241.4c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.8 4.8-12.3.1-17z"></path></svg>
                   </a>
                 </div>
@@ -94,7 +100,7 @@ const IndexPage = ({ children, show, createTyped }) => {
                   {projectData.map((datum, index) => (
                     <ProjectCard datum={datum} 
                                  key={index}
-                                 onClick={() => onProjectCardClick(datum, index)} />
+                                 onClick={() => onProjectCardClick(index)} />
                   ))}
                 </div>
               </div>
@@ -135,19 +141,20 @@ const IndexPage = ({ children, show, createTyped }) => {
                         
         </main>
 
-        {projectData.map((datum, index) => {
-          const onLeftArrow = () => setCurrentModalIndex(index - 1)
-          const onRightArrow = () => setCurrentModalIndex(index + 1)
-          return <ProjectModal 
-                    showIndex={currentModalIndex} 
-                    modalIndex={index}
-                    lastIndex={projectData.length - 1}
-                    datum={datum} 
-                    key={"modal" + index}
-                    onClose={onProjectModalClose} 
-                    onLeftArrow={onLeftArrow}
-                    onRightArrow={onRightArrow} />
-        })}
+        <ModalSequence
+          ref={modalSequenceRef}
+          onExitModalSequence={onExitModalSequence}
+          data={projectData}
+          renderModal={
+            (props) => {
+              return (
+                <ProjectModal 
+                  {...props}
+                />
+            )}
+          }
+        />
+
     </Fragment>
   )
 }

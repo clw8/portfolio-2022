@@ -138,11 +138,16 @@
 
 
     .scroll-p {
-      text-align: center;
+      display: flex;
       opacity: 0.6;
-      margin-right: 1.5rem;
-      padding-bottom: 0;
-      font-size: 12px;
+      
+      p {
+        margin-right: 1.5rem;
+        text-align: center;
+        font-size: 12px;
+        padding-bottom: 0;
+        color: $black;
+      }
     }
 
     svg {

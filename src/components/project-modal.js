@@ -23,7 +23,6 @@ const ProjectModal = (props) => {
   const transitionRightOut =
     typeof prevShowIndex === "undefined" || showIndex <= prevShowIndex;
 
-    console.log(showIndex, prevShowIndex, "projmodal", transitionRightIn, transitionRightOut, index)
   const animations = {
     in: transitionRightIn ? "in-right" : "in-left",
     inEnd: transitionRightIn ? "in-right-end" : "in-left-end",

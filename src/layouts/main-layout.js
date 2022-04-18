@@ -3,6 +3,12 @@ import { Header, Loader } from "../components"
 import Typed from 'typed.js';
 import ProfileImage from "../images/main-image.jpeg"
 import {Helmet} from "react-helmet"
+import { throttle } from "../utils";
+import Fade from 'react-reveal/Fade';
+
+window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+}
 
 const typedJsStrings = {
   home: "",
@@ -20,8 +26,8 @@ const MainLayout = (props) => {
   const {children} = props;
   const [typedJsString, setTypedJsString] = useState(null)
   const [showPageFirstLoad, setShowPageFirstLoad] = useState(false)
+  const [showScrollIcon, setShowScrollIcon] = useState(false)
   const typedRef = useRef(null)
-
 
   const createTyped = (pageName, delay = 0) => {
       if( typedJsString ) {
@@ -69,6 +75,7 @@ const MainLayout = (props) => {
   }, [showPageFirstLoad])
 
   useEffect(() => {
+    // initial typed effect on "Welcome"
     createTyped("home", 500)
 
     if (document.readyState === 'complete') {
@@ -77,10 +84,7 @@ const MainLayout = (props) => {
       window.addEventListener('load', handleLoad, false);
     }
 
-    window.onbeforeunload = function () {
-      window.scrollTo(0, 0);
-    }
-
+    // load the profile pic in the header first before showing the content
     const profilePicImage = new Image
     profilePicImage.src = ProfileImage
     preloadImages.push(profilePicImage)
@@ -89,11 +93,22 @@ const MainLayout = (props) => {
       if(image.complete) preloadedImagesCount++
       else image.onload = () => preloadedImagesCount++
     })
+
+    // show scroll up icon on scroll past the hero area
+    const scrollPastHeight = window.innerHeight / 3 * 2
+    const scrollHandler = throttle(() => {
+       const showScrollIconNewValue = window.scrollY > scrollPastHeight
+       if (showScrollIcon !== showScrollIconNewValue) {
+         setShowScrollIcon(showScrollIconNewValue)
+       }
+    }, 200)
+    document.addEventListener("scroll", scrollHandler, {passive: true})
     
     // Destropying
     return () => {
       typedJsString && typedJsString.destroy();
       window.removeEventListener('load', handleLoad);
+      document.removeEventListener("scroll", scrollHandler, {passive: true})
     };
   }, []);
 
@@ -107,6 +122,10 @@ const MainLayout = (props) => {
     return child;
   });
 
+  const onClickScrollTop = () => {
+    document.body.scrollIntoView({ behaviour: "smooth" })
+  }
+
   return (
       <div className="wrapper" >
         <Helmet bodyAttributes={{ class: "body body--no-scroll"}}>
@@ -118,6 +137,11 @@ const MainLayout = (props) => {
                 show={showPageFirstLoad} />
           {showPageFirstLoad && childrenWithProps}
         <p ref={typedRef} className="sync-text"></p>
+        <Fade bottom distance={"20px"} duration={1000} when={showScrollIcon}>
+          <div className="icon icon__scroll-top" onClick={onClickScrollTop}> 
+            <svg width="15"  aria-hidden="true" focusable="false" data-prefix="fal" data-icon="arrow-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M443.5 248.5l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L241 419.9V44c0-6.6-5.4-12-12-12h-10c-6.6 0-12 5.4-12 12v375.9L28.5 241.4c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.8 4.8-12.3.1-17z"></path></svg>
+          </div>
+        </Fade>
         <Loader show={!showPageFirstLoad}></Loader>
       </div>
   )

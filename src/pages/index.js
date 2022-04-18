@@ -16,16 +16,14 @@ import { useScrollRestoration } from "gatsby"
 
 const IndexPage = ({ children, show, createTyped }) => {
   const { onClickHashScrollTo } = useScrollTo()
- // const [initialContentAnimationPlayState, setInitialContentAnimationPlayState] = React.useState(false) // children must be a function
   const [animation, setAnimation] = React.useState(3)
   const pageScrollRestoration = useScrollRestoration("index-page");
-  const [currentModalIndex, setCurrentModalIndex] = useState(false)
   const modalSequenceRef = useRef()
 
   const typedRef = useRef(null)
 
   useEffect(() => {
-    const typed = new Typed(typedRef.current, {
+    new Typed(typedRef.current, {
       // strings: ["Welcome."],
       stringsElement: '#typed-strings', // Strings to display
       // Speed settings, try diffrent values untill you get good results
@@ -92,7 +90,7 @@ const IndexPage = ({ children, show, createTyped }) => {
               </div>
             </Fade>
 
-              <div className="content__section" id="projects">
+              <div className="content__section content__section--border" id="projects">
                 <Fade bottom distance={"20px"} duration={2000}>
                   <h2>Projects that I'm proud to have contributed to.</h2>
                 </Fade>
@@ -105,12 +103,12 @@ const IndexPage = ({ children, show, createTyped }) => {
                 </div>
               </div>
             
-            <Fade bottom cascade distance={"20px"} duration={2000} when={show}>
+            <Fade bottom cascade distance={"20px"} duration={2000} >
 
               <div className="content__section" id="contact">
                 <h2>Get in contact</h2>
                 <p>Let's discuss what you need and what I can offer. Please find my resume <a href={ChrisResumePDF} onMouseEnter={() => createTyped("resume")}>here</a>.</p>
-                <p>And get in contact with me <a href="mailto:mail@clw8.com" onMouseEnter={() => createTyped("mail")}>here</a>.</p>
+                <p>And get in contact with me <a href="mailto:contact@clw8.dev" onMouseEnter={() => createTyped("mail")}>here</a>.</p>
                 <br></br>
                 <div className="icon-container__flex">
                   {/* Github icon */}
@@ -132,7 +130,6 @@ const IndexPage = ({ children, show, createTyped }) => {
                   </a>
                 </div>
 
-              <p></p>
               </div>
             </Fade>
           </div>

@@ -1,15 +1,19 @@
 import React, {useEffect, useState} from "react"
 import Fade from 'react-reveal/Fade';
 
+const defaultAnimations = {
+    in: "in-right",
+    inEnd: "in-right-end",
+    out: "out-right",
+    outEnd: "out-right-end",
+}
 
 const Modal = (props) => {
-    const { children, style, show, animations, onNavigateBack, usePopState = true } = props
-    const [animation, setAnimation] = React.useState("out-right-end")
+    const { children, style, show, onNavigateBack, animations = defaultAnimations } = props
+    const [animation, setAnimation] = React.useState(animations.outEnd)
     const [initialLoad, setInitialLoad] = useState(false)
     const [prevShow, setPrevShow] = useState(show)
-    // TODO.. come back to this? back button to trigger going to prev modal
 
-    //const [uniqueModalKey, ] = React.useState(Math.random().toString())
 
     const preventScroll = () => {
         document.body.style.overflow = "hidden"
@@ -34,7 +38,7 @@ const Modal = (props) => {
     const openModal = () => {
         preventScroll() 
         if (animations.in) setAnimation(animations.in)
-        if (usePopState) window.history.pushState({}, "/") // on back close the modal
+        if (onNavigateBack) window.history.pushState({}, "/") // on back close the modal
     }
 
     const closeModal = () => {
@@ -51,17 +55,11 @@ const Modal = (props) => {
 
     // back button functionality, if needed
     useEffect(() => {
-        if (usePopState) {
-            const eventListenerPopState = () => {
-                closeModal()
-            }
-            window.addEventListener("popstate", eventListenerPopState)
-      
-            return () => window.removeEventListener("popstate", eventListenerPopState)
+        if (onNavigateBack) {
+            window.addEventListener("popstate", onNavigateBack)
+            return () => window.removeEventListener("popstate", onNavigateBack)
         }
-    }, [prevShow, show, usePopState])
-
-
+    }, [onNavigateBack])
 
     return (
         <div className="modal" style={style} animation={animation} onAnimationEnd={onAnimationEnd}>

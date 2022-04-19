@@ -5,6 +5,7 @@ import ProfileImage from "../images/main-image.jpeg"
 import {Helmet} from "react-helmet"
 import { throttle } from "../utils";
 import Fade from 'react-reveal/Fade';
+import * as Favicons from "../images/favicons"
 
 const typedJsStrings = {
   home: "",
@@ -125,14 +126,14 @@ const MainLayout = (props) => {
         <Helmet bodyAttributes={{ class: "body body--no-scroll"}}>
           <title>Chris' Portfolio</title>
           <meta name="description" content="Front-end web developer or something- clw8's web portfolio. "></meta>
-          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
-          <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
-          <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
-          <link rel="manifest" href="/images/site.webmanifest" />
-          <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5" />
-          <link rel="shortcut icon" href="/images/favicon.ico" />
+          <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png" />
+          <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png" />
+          <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png" />
+          <link rel="manifest" href="images/site.webmanifest" />
+          <link rel="mask-icon" href="images/safari-pinned-tab.svg" color="#5bbad5" />
+          <link rel="shortcut icon" href="images/favicon.ico" />
           <meta name="msapplication-TileColor" content="#da532c" />
-          <meta name="msapplication-config" content="/images/browserconfig.xml" />
+          <meta name="msapplication-config" content="images/browserconfig.xml" />
           <meta name="theme-color" content="#ffffff" />
         </Helmet>
         <Header onHover={createTyped}

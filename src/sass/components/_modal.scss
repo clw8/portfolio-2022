@@ -40,7 +40,7 @@
     top: 0;
     width: 102%;
     height: 100vh;
-    background: navajowhite;
+    background: white;
     z-index: z("modal");
     transform: translateX(100%);
     display: flex;
@@ -188,7 +188,7 @@
         position: absolute;
         top: 1rem;
         right: 2rem;
-        opacity: 0.8;
+        opacity: 0.6;
         cursor: pointer;
 
         @include mq("tablet") {
@@ -197,11 +197,10 @@
         }
         
         img {
-            width: .9rem;
+            width: .8rem;
 
-            @include mq("tablet") {
-                
-                width: 1rem;
+            @include mq("tablet") {        
+                width: 0.9rem;
             }
         }
 
@@ -237,5 +236,24 @@
                 left: calc(100% - 4rem - 1.5rem);
             }
         }
+    }
+}
+
+.contact-form-modal {
+    box-shadow: -5px -6px 24px 24px rgba(0,0,0,0.2);
+
+    &__content {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__form {
+        padding-top: 2rem;
+        max-width: 500px;
+    }
+
+    &__submit {
+        float: right;
+    margin-top: 1rem;
     }
 }

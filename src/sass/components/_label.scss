@@ -1,6 +1,6 @@
 
 .label {
-  font-size: 0.75rem;
+  font-size: 0.82rem;
   line-height: 1rem;
   color: $grey-mid;
   text-transform: uppercase;
@@ -8,9 +8,22 @@
   overflow: hidden;
   white-space: nowrap;
   cursor: default;
+  position: relative;
 
+  
   &--input {
-    margin-bottom: 1rem;
+    margin-bottom: .25rem;
+    display: inline-block;
+    overflow: visible;
+
+    &::after {
+      content: attr(error-content);
+      position: absolute;
+      left: calc(100% + 1rem);
+      top: 0;
+      color: $color-primary;
+      text-transform: none;
+    }
   }
 
   &--error {

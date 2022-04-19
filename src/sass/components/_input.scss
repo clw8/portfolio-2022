@@ -1,5 +1,10 @@
 .input__container {
   position: relative;
+  margin-bottom: 1rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .input,
@@ -9,7 +14,7 @@
   border-radius: $border-radius;
   background: none;
   color: $color-secondary;
-  padding: 1.25rem 1rem;
+  padding: .5rem 1rem;
   width: 100%;
 
   &:focus {
@@ -27,5 +32,5 @@
 }
 
 .input {
-  height: 4rem;
+  height: 2.7rem;
 }

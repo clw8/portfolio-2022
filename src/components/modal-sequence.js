@@ -6,6 +6,7 @@ const ModalSequence = forwardRef((props, ref) => {
     const { data, onExitModalSequence, renderModal } = props
     const [modalHistory, setModalHistory] = useState([])
     const [showIndex, setShowIndex] = useState(false)
+    const [popStateAnimation, setPopStateAnimation] = useState(false)
 
     useImperativeHandle(ref, () => ({
         openSequence: (index = 0) => {
@@ -27,12 +28,14 @@ const ModalSequence = forwardRef((props, ref) => {
     const goToNext = () => {
         setShowIndex(showIndex + 1)
         setModalHistory((oldHistory) => [...oldHistory, showIndex + 1])
+        window.history.pushState({}, "/")
     }
     
     // programatically trigger the previous modal in the sequence with goToPrevious
     const goToPrevious = () => {
         setShowIndex(showIndex - 1)
         setModalHistory((oldHistory) => [...oldHistory, showIndex - 1])
+        window.history.pushState({}, "/")
     }
 
     // on the brownser back button, return the user to the previous modal
@@ -41,23 +44,30 @@ const ModalSequence = forwardRef((props, ref) => {
             if (modalHistory.length) {
                 //TODO: traverse through modal history on back button
                 // edit history and transition to modal shown to user before this one
-                // const newHistory = modalHistory.slice()
-                // newHistory.pop()
-                // const newShowIndex = newHistory[newHistory.length - 1]
-                // console.log(newShowIndex, showIndex)
-                // if (typeof newShowIndex !== "undefined") {
-                //     if (newShowIndex > showIndex) {
-                //         setModalHistory(newHistory)
-                //         setShowIndex(newShowIndex)
-                //     } else if (newShowIndex < showIndex) {
-                //         setModalHistory(newHistory)
-                //         setShowIndex(newShowIndex)
-                //     }
-                // } else {
+                const newHistory = modalHistory.slice()
+                newHistory.pop()
+                const newShowIndex = newHistory[newHistory.length - 1]
+                console.log(newShowIndex, showIndex)
+                setPopStateAnimation(true)
+                if (typeof newShowIndex !== "undefined") {
+                    if (newShowIndex > showIndex) {
+                        // setModalHistory(newHistory)
+                        console.log("newShowIndex", newShowIndex)
+                        setShowIndex(newShowIndex)
+                    } else if (newShowIndex < showIndex) {
+                        console.log("newShowIndex", newShowIndex)
+                        setShowIndex(newShowIndex)
+                        // setModalHistory(newHistory)
+                    }
+                } else {
                     exitModalSequence()
-                // }
+                }
 
-                // setModalHistory(newHistory)
+                setTimeout(() => {
+                    // set new history after modal animation finishes
+                    setModalHistory(newHistory)
+                    setPopStateAnimation(false)
+                }, 500) // allow user to set duration?
             }
         }
         window.addEventListener("popstate", eventListenerPopState)
@@ -79,11 +89,12 @@ const ModalSequence = forwardRef((props, ref) => {
         const onOpen = () => {
             if (!modalHistory.length) {
                 setModalHistory([showIndex])
+                window.history.pushState({}, "/")
             }
         }
 
         const showModal = showIndex === index;
-        const prevShowIndex = modalHistory[modalHistory.length - 2];
+        const prevShowIndex = popStateAnimation ? modalHistory[modalHistory.length - 1] : modalHistory[modalHistory.length - 2];
 
         const wrapperProps = {
             datum, 

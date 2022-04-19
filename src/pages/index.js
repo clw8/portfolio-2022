@@ -6,12 +6,9 @@ import projectData from "../data/project-data"
 import JedAdanFooterImage from "../images/jed-adan-footer.jpg";
 import ChrisResumePDF from "../images/Christopher_Walsh_CV.pdf";
 import Fade from 'react-reveal/Fade';
-import { ProjectCard, ProjectModal, ModalSequence, ContactForm } from "../components"
+import { ProjectCard, ProjectModal, ModalSequence, ContactFormModal } from "../components"
 import { useScrollTo } from "../hooks";
 import { useScrollRestoration } from "gatsby"
-
-
-// todo seo and favicon
 
 
 const IndexPage = ({ createTyped }) => {
@@ -19,16 +16,16 @@ const IndexPage = ({ createTyped }) => {
   const [animation, setAnimation] = React.useState(3)
   const pageScrollRestoration = useScrollRestoration("index-page");
   const modalSequenceRef = useRef()
-
   const typedRef = useRef(null)
+  const [showContactFormModal, setShowContactFormModal] = useState(false)
 
   useEffect(() => {
     new Typed(typedRef.current, {
-      // strings: ["Welcome."],
+      // strings: ["Welcome.", "clw8.dev"],
       stringsElement: '#typed-strings', // Strings to display
       // Speed settings, try diffrent values untill you get good results
-      startDelay: 300,
-      typeSpeed: 60,
+      startDelay: 500,
+      typeSpeed: 75,
       showCursor: false,
       contentType: "null",
     });
@@ -56,6 +53,13 @@ const IndexPage = ({ createTyped }) => {
     }
   }
 
+  const closeContactForm = () => setShowContactFormModal(false)
+  
+  const openContactForm = (event) => {
+    event.preventDefault()
+    setShowContactFormModal(true)
+  }
+
   return (
     <Fragment>
 
@@ -76,7 +80,7 @@ const IndexPage = ({ createTyped }) => {
                     <p>I approach problem-solving with as much patience as possible! While it's always great to instantly find the fix for a bug via Stack Overflow, there are times when that approach doesn't cut it. </p>
                     <p>It's during those times, I've found that patience with myself and others really is a virtue. And after much (oddly calm) head scratching, I'll usually find the solution to the problem with dogged persistence and perhaps some creative ingenuity.</p>
                     <p>When I work on a project, I'll also try first to understand the bigger picture, and how the nitty-gritty details all fit in; not only to provide a great UI/UX but also to holistically provide value to the business' product offering and keep customers coming back.</p>
-                    <p>If this sounds like someone you want to work with, please <a href="#contact" onClick={onClickHashScrollTo}>get in touch</a>. Currently, I'm looking for work in London, so if I've just contacted you or applied to your company, I'd love to talk with you over a (remote?) cup of coffee.</p>
+                    <p>If this sounds like someone you want to work with, please <a href="#contact" onClick={openContactForm}>get in touch</a>. Currently, I'm looking for work in London, so if I've just contacted you or applied to your company, I'd love to talk with you over a (remote?) cup of coffee.</p>
                 </div>
 
                 <div className="content__flex">
@@ -108,7 +112,7 @@ const IndexPage = ({ createTyped }) => {
               <div className="content__section" id="contact">
                 <h2>Get in contact</h2>
                 <p>Let's discuss what you need and what I can offer. Please find my resume <a href={ChrisResumePDF} onMouseEnter={() => createTyped("resume")} onMouseLeave={() => createTyped("")}>here</a>.</p>
-                <p>And get in contact with me <a href="mailto:contact@clw8.dev" onMouseEnter={() => createTyped("mail")} onMouseLeave={() => createTyped("")}>here</a>.</p>
+                <p>And get in contact with me <a href="#" onClick={openContactForm} onMouseEnter={() => createTyped("mail")} onMouseLeave={() => createTyped("")}>here</a>.</p>
                 <br></br>
                 <div className="icon-container__flex">
                   {/* Github icon */}
@@ -132,9 +136,6 @@ const IndexPage = ({ createTyped }) => {
 
               </div>
             </Fade>
-            <div className="content__section">
-              <ContactForm/>
-            </div>
           </div>
 
 
@@ -142,6 +143,11 @@ const IndexPage = ({ createTyped }) => {
                         
         </main>
 
+        <ContactFormModal show={showContactFormModal} 
+                              onNavigateBack={closeContactForm} 
+                              onClose={closeContactForm}/>
+
+        {/* Project cards */}
         <ModalSequence
           ref={modalSequenceRef}
           onExitModalSequence={onExitModalSequence}

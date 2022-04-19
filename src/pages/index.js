@@ -6,7 +6,7 @@ import projectData from "../data/project-data"
 import JedAdanFooterImage from "../images/jed-adan-footer.jpg";
 import ChrisResumePDF from "../images/Christopher_Walsh_CV.pdf";
 import Fade from 'react-reveal/Fade';
-import { ProjectCard, ProjectModal, ModalSequence } from "../components"
+import { ProjectCard, ProjectModal, ModalSequence, ContactForm } from "../components"
 import { useScrollTo } from "../hooks";
 import { useScrollRestoration } from "gatsby"
 
@@ -14,7 +14,7 @@ import { useScrollRestoration } from "gatsby"
 // todo seo and favicon
 
 
-const IndexPage = ({ children, show, createTyped }) => {
+const IndexPage = ({ createTyped }) => {
   const { onClickHashScrollTo } = useScrollTo()
   const [animation, setAnimation] = React.useState(3)
   const pageScrollRestoration = useScrollRestoration("index-page");
@@ -107,8 +107,8 @@ const IndexPage = ({ children, show, createTyped }) => {
 
               <div className="content__section" id="contact">
                 <h2>Get in contact</h2>
-                <p>Let's discuss what you need and what I can offer. Please find my resume <a href={ChrisResumePDF} onMouseEnter={() => createTyped("resume")}>here</a>.</p>
-                <p>And get in contact with me <a href="mailto:contact@clw8.dev" onMouseEnter={() => createTyped("mail")}>here</a>.</p>
+                <p>Let's discuss what you need and what I can offer. Please find my resume <a href={ChrisResumePDF} onMouseEnter={() => createTyped("resume")} onMouseLeave={() => createTyped("")}>here</a>.</p>
+                <p>And get in contact with me <a href="mailto:contact@clw8.dev" onMouseEnter={() => createTyped("mail")} onMouseLeave={() => createTyped("")}>here</a>.</p>
                 <br></br>
                 <div className="icon-container__flex">
                   {/* Github icon */}
@@ -132,7 +132,11 @@ const IndexPage = ({ children, show, createTyped }) => {
 
               </div>
             </Fade>
+            <div className="content__section">
+              <ContactForm/>
+            </div>
           </div>
+
 
             <img src={JedAdanFooterImage} className="footer-image" />
                         

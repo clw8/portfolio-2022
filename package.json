@@ -15,6 +15,8 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@formspree/react": "^2.2.4",
+    "axios": "^0.26.1",
     "gatsby": "^4.6.1",
     "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-image": "^2.6.0",
@@ -25,12 +27,20 @@
     "gatsby-source-filesystem": "^4.6.0",
     "gatsby-transformer-sharp": "^4.6.0",
     "netlify-cms-app": "^2.15.65",
+    "prop-types": "^15.8.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
+    "react-hook-form": "^7.30.0",
     "react-reveal": "^1.2.2",
     "react-typed": "^1.2.0",
     "sass": "^1.49.7",
     "typed.js": "^2.0.12"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.1.1",
+    "cypress": "^9.5.4",
+    "start-server-and-test": "^1.14.0"
   }
 }

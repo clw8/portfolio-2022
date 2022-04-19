@@ -6,10 +6,6 @@ import {Helmet} from "react-helmet"
 import { throttle } from "../utils";
 import Fade from 'react-reveal/Fade';
 
-window.onbeforeunload = function () {
-  window.scrollTo(0, 0);
-}
-
 const typedJsStrings = {
   home: "",
   "profile": "All about this guy.",
@@ -47,12 +43,6 @@ const MainLayout = (props) => {
       }
   }
 
-  useEffect(() => {
-    if(props.location.uri === "/") {
-      
-    }
-  }, [props.location.uri])
-
   const onLinkMouseOut = (event) => {
       createTyped("home")
   }
@@ -70,6 +60,10 @@ const MainLayout = (props) => {
     if(showPageFirstLoad) {
       setTimeout(() => {
         document.body.classList.remove("body--no-scroll")
+
+        window.onbeforeunload = function () {
+          window.scrollTo(0, 0);
+        }
       }, 1800)
     }
   }, [showPageFirstLoad])
@@ -131,6 +125,15 @@ const MainLayout = (props) => {
         <Helmet bodyAttributes={{ class: "body body--no-scroll"}}>
           <title>Chris' Portfolio</title>
           <meta name="description" content="Front-end web developer or something- clw8's web portfolio. "></meta>
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+          <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
+          <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
+          <link rel="manifest" href="/images/site.webmanifest" />
+          <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5" />
+          <link rel="shortcut icon" href="/images/favicon.ico" />
+          <meta name="msapplication-TileColor" content="#da532c" />
+          <meta name="msapplication-config" content="/images/browserconfig.xml" />
+          <meta name="theme-color" content="#ffffff" />
         </Helmet>
         <Header onHover={createTyped}
                 onMouseOut={onLinkMouseOut}

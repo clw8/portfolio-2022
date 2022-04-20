@@ -5,7 +5,7 @@ import ProfileImage from "../images/main-image.jpeg"
 import {Helmet} from "react-helmet"
 import { throttle } from "../utils";
 import Fade from 'react-reveal/Fade';
-import * as Favicons from "../images/favicons"
+// import * as Favicons from "../images/favicons"
 
 const typedJsStrings = {
   home: "",
@@ -136,16 +136,19 @@ const MainLayout = (props) => {
           <meta name="msapplication-config" content="images/browserconfig.xml" />
           <meta name="theme-color" content="#ffffff" />
         </Helmet>
-        <Header onHover={createTyped}
-                onMouseOut={onLinkMouseOut}
-                show={showPageFirstLoad} />
-          {showPageFirstLoad && childrenWithProps}
+        <Header onHover={createTyped} onMouseOut={onLinkMouseOut} show={showPageFirstLoad} />
+
+        {showPageFirstLoad && childrenWithProps}
+
         <p ref={typedRef} className="sync-text"></p>
+
+        {/* scroll up arrow */}
         <Fade bottom distance={"20px"} duration={1000} when={showScrollIcon}>
           <div className="icon icon__scroll-top" onClick={onClickScrollTop}> 
             <svg width="15"  aria-hidden="true" focusable="false" data-prefix="fal" data-icon="arrow-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M443.5 248.5l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L241 419.9V44c0-6.6-5.4-12-12-12h-10c-6.6 0-12 5.4-12 12v375.9L28.5 241.4c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.8 4.8-12.3.1-17z"></path></svg>
           </div>
         </Fade>
+
         <Loader show={!showPageFirstLoad}></Loader>
       </div>
   )

@@ -5,12 +5,18 @@ function Checkbox(props) {
 	const {
 		id,
 		className  = '',
+		error = '',
 		checked,
 		onChange,
 	} = props;
 
+	const checkboxClass = (() => {
+		if (error) return "checkbox checkbox--error"
+		else return "checkbox"
+	})()
+
 	return (
-		<div className={`checkbox ${className}`}>
+		<div className={`${checkboxClass} ${className}`}>
 			<input onChange={onChange}
 				   checked={checked}
 				   className="checkbox__input"

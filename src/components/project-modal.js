@@ -4,6 +4,7 @@ import RightArrow from "../images/icons/right-arrow.png";
 import CloseIcon from "../images/icons/cancel.png";
 import Modal from "./modal.js";
 
+//coupled with modal-sequence component, but with some small changes can be used as a standalone modal
 const ProjectModal = (props) => {
   const {
     index,
@@ -11,8 +12,8 @@ const ProjectModal = (props) => {
     data,
     goToNext,
     goToPrevious,
-    onClose,
-    onOpen,
+    goBackToPreviousModal,
+    onOpenModal,
     show,
     prevShowIndex,
     showIndex,
@@ -32,7 +33,7 @@ const ProjectModal = (props) => {
   };
 
   const onCloseIconClick = () => {
-    onClose && onClose(true);
+    goBackToPreviousModal && goBackToPreviousModal(true);
   };
   const onRightArrowClick = () => {
     goToNext && goToNext();
@@ -44,9 +45,9 @@ const ProjectModal = (props) => {
 
   useEffect(() => {
     if (show) {
-      onOpen && onOpen();
+      onOpenModal && onOpenModal();
     } else {
-      onClose && onClose();
+      goBackToPreviousModal && goBackToPreviousModal();
     }
   }, [show]);
 

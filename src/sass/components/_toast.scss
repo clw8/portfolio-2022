@@ -1,5 +1,15 @@
 $bottom: 1.5rem;
 
+@keyframes toastAnimation {
+  0% {
+    transform: translateY(100%) translateY($bottom);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}
+
 .toast {
   position: fixed;
   z-index: z('toast');
@@ -27,6 +37,26 @@ $bottom: 1.5rem;
     margin: 0 $grid-o-gutter--dtp;
   }
 
+  p {
+    padding-bottom: 0;
+  }
+
+  &--error {
+    background-color: $error-bg;
+    
+    p {
+      color: $white;
+    }
+  }
+
+  &--success {
+    background-color: $success-bg;
+    
+    p {
+      color: $white;
+    }
+  }
+
   &:hover {
     cursor: pointer;
   }
@@ -44,35 +74,29 @@ $bottom: 1.5rem;
     @include mq('tablet-small') {
       font-size: 14px;
     }
-
   }
-}
 
-.toast-transition {
-  &-enter {
-    opacity: 0;
+  &[animation="toast-in"] {
+    animation-name: toastAnimation;
+    animation-timing-function: ease-out; // inverse of enter's leave function
+    animation-duration: 0.18s;
+    animation-fill-mode: forwards;
+  }
+
+  &[animation="toast-in-end"] {
+    transform: translateY(0);
+  }
+
+      
+  &[animation="toast-out"] {
+    animation-name: toastAnimation;
+    animation-timing-function: ease-in; // inverse of in-right's function
+    animation-duration: 0.25s;
+    animation-direction: reverse;
+    animation-fill-mode: forwards;
+  }
+
+  &[animation="toast-out-end"] {
     transform: translateY(100%) translateY($bottom);
-
-    &-active {
-      transition: opacity .24s ease, transform .24s ease;
-    }
-
-    &-active,
-    &-done {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  &-exit {
-    transition: transform .16s ease;
-
-    &-active {
-      transition: transform .16s ease;
-    }
-
-    &-done {
-      transform: translateY(100%) translateY($bottom);
-    }
   }
 }

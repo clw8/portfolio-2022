@@ -80,13 +80,13 @@ const ModalSequence = forwardRef((props, ref) => {
         // the user may choose to exit from the whole modal sequence at any point by setting allModals to true
         // if allModals is falsy, then closing a modal returns it the the previously opened modal (if there is one)
         // ...goToPrevious handles this returning to a previous modal, and should be attached to a clickable element
-        const onClose = (allModals) => {
+        const goBackToPreviousModal = (allModals) => {
             if (allModals || !modalHistory.length) {
                 exitModalSequence()
             }
         }
 
-        const onOpen = () => {
+        const onOpenModal = () => {
             if (!modalHistory.length) {
                 setModalHistory([showIndex])
                 window.history.pushState({}, "/")
@@ -102,8 +102,8 @@ const ModalSequence = forwardRef((props, ref) => {
             data, 
             goToNext, 
             goToPrevious, 
-            onClose, 
-            onOpen, 
+            goBackToPreviousModal, 
+            onOpenModal, 
             show: showModal, 
             showIndex, 
             prevShowIndex,

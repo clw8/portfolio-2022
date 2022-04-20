@@ -62,14 +62,14 @@
         //transform: translateX(0%);
 
         animation-name: modalAnimation;
-        animation-timing-function: cubic-bezier(.21,-.09,.72,0.45); // inverse of enter's leave function
+        animation-timing-function: cubic-bezier(.21,-.09,.72,0.45);
         animation-duration: 0.8s;
         animation-fill-mode: forwards;
     }
     
     &[animation="out-right"] {
         animation-name: modalAnimation;
-        animation-timing-function: cubic-bezier(.28,.55,.79,1.09);
+        animation-timing-function: cubic-bezier(.28,.55,.79,1.09); // inverse of in-right's function
         animation-duration: 0.8s;
         animation-direction: reverse;
         animation-fill-mode: forwards;
@@ -88,14 +88,14 @@
         //transform: translateX(0%);
 
         animation-name: modalAnimationLeft;
-        animation-timing-function: cubic-bezier(.21,-.09,.72,0.45); // inverse of enter's leave function
+        animation-timing-function: cubic-bezier(.21,-.09,.72,0.45);
         animation-duration: 0.8s;
         animation-fill-mode: forwards;
     }
     
     &[animation="out-left"] {
         animation-name: modalAnimationLeft;
-        animation-timing-function: cubic-bezier(.28,.55,.79,1.09);
+        animation-timing-function: cubic-bezier(.28,.55,.79,1.09); // inverse of in-left's function
         animation-duration: 0.8s;
         animation-direction: reverse;
         animation-fill-mode: forwards;

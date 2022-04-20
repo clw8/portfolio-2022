@@ -9,7 +9,7 @@
   hyphens: auto;
 
   &--error {
-    & ~ .checkbox__label {
+    & .checkbox__label {
       color: $color-primary;
 
       & p, & a {
@@ -29,10 +29,6 @@
 
     &:hover {
       opacity: .72;
-    }
-
-    &--error {
-      color: $color-primary !important;
     }
   }
 
@@ -72,10 +68,6 @@
       opacity: .72;
     }
 
-    &--error ~ .checkbox__label {
-      color: $color-primary;
-    }
-
     &:checked {
       border-color: $color-primary;
 
@@ -83,10 +75,6 @@
         transform: scale(1) rotate(-45deg);
         transition: transform .12s ease-out;
       }
-    }
-
-    &--error {
-      border: 1px solid $color-primary;
     }
   }
 }

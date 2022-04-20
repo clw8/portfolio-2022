@@ -11,9 +11,7 @@ const defaultAnimations = {
 const Modal = (props) => {
     const { children, style, show, onNavigateBack, animations = defaultAnimations } = props
     const [animation, setAnimation] = React.useState(animations.outEnd)
-    const [initialLoad, setInitialLoad] = useState(false)
-    const [prevShow, setPrevShow] = useState(show)
-
+    const [initialLoad, setInitialLoad] = useState(true)
 
     const preventScroll = () => {
         document.body.style.overflow = "hidden"
@@ -24,14 +22,10 @@ const Modal = (props) => {
     }
 
     useEffect(() => {
-        if (show !== prevShow) {
-            if (show && !initialLoad) {
-                setInitialLoad(true)
-                openModal()
-            } else if(initialLoad) {
-                show ? openModal() : closeModal()
-            }
-            setPrevShow(show)
+        if (initialLoad) {
+            setInitialLoad(false)
+        } else {
+            show ? openModal() : closeModal()
         }
     }, [show])
 

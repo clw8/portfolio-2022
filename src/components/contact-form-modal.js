@@ -3,6 +3,8 @@ import { useForm, Controller } from "react-hook-form";
 import { Checkbox, Modal } from ".";
 import CloseIcon from "../images/icons/cancel.png";
 import axios from "axios";
+import { useToast } from '../hooks'
+
 
 function ContactFormModal(props) {
   const { show, onClose, onNavigateBack } = props;
@@ -18,10 +20,15 @@ function ContactFormModal(props) {
     },
   });
 
+  const { showErrorToast, showSuccessToast, toastTypes } = useToast();
+
+
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const onSubmit = (data) => {
     setIsSubmitting(true)
+    delete data.terms; // not needed
+
     axios({
       url: "https://formspree.io/f/mayvpkbo",
       method: "post",
@@ -31,21 +38,21 @@ function ContactFormModal(props) {
       data,
     })
     .then((response) => {
+      console.log(errors)
         setIsSubmitting(false)
-        console.log(response);
+        showSuccessToast("Thank you for getting in contact. I will get back to you soon :)")
       })
       .catch((error) => {
+        console.log(error, errors)
+        showErrorToast("Oops! There was a network problem. Please check your internet connection.")
         setIsSubmitting(false)
-        //toast network error
-        /// oops problems...
-        //status.innerHTML = "Oops! There was a problem submitting your form"
       });
   };
 
   const onCloseIconClick = () => {
     onClose && onClose();
   };
-console.log(show)
+
   return (
     <Modal show={show} onNavigateBack={onNavigateBack} className="contact-form-modal">
       <Fragment>
@@ -112,6 +119,7 @@ console.log(show)
                   <Checkbox
                     id={field.name}
                     checked={field.value}
+                    error={errors?.terms}
                     onChange={field.onChange}>
                   I agree for my email to be stored for the purposes of being contacted
                     back by Chris

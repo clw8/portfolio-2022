@@ -6,7 +6,7 @@ import projectData from "../data/project-data"
 import JedAdanFooterImage from "../images/jed-adan-footer.jpg";
 import ChrisResumePDF from "../images/Christopher_Walsh_CV.pdf";
 import Fade from 'react-reveal/Fade';
-import { ProjectCard, ProjectModal, ModalSequence, ContactFormModal, Toast } from "../components"
+import { ProjectCard, ProjectModal, ModalSequence, ContactFormModal } from "../components"
 import { useScrollTo } from "../hooks";
 import { useScrollRestoration } from "gatsby"
 import ToastProvider from "../context-providers/toast-provider";
@@ -164,7 +164,6 @@ const IndexPage = ({ createTyped }) => {
           />
 
       </Fragment>
-      <Toast/>
     </ToastProvider>
   )
 }

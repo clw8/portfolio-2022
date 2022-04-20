@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
+import { Toast } from "../components"
 
 const toastTypes = {
     SUCCESS: "success",
@@ -23,6 +24,7 @@ const ToastProvider = ({ children }) => {
             setToastMessage
         }}>
             {children}
+            <Toast/>
         </ToastContext.Provider>
     )
 }

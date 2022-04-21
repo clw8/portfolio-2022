@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header renders correctly 1`] = `
+<DocumentFragment>
+  <header
+    class="react-reveal"
+    style="opacity: 1;"
+  >
+    <div
+      class="profile-image"
+    >
+      <img
+        alt="A picture of clw8, the developer of this portfolio site :)"
+        height="100"
+        src="test-file-stub"
+        width="100"
+      />
+    </div>
+    <nav>
+      <a
+        href="#projects"
+      >
+        Projects
+      </a>
+      <a
+        href="test-file-stub"
+      >
+        Resume
+      </a>
+      <a
+        href="#contact"
+      >
+        Contact
+      </a>
+    </nav>
+  </header>
+</DocumentFragment>
+`;

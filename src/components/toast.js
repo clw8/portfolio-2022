@@ -52,7 +52,7 @@ function Toast() {
 	}, [toastIsShown, toastMessage])
 
 	return (
-        <div className={toastClass} animation={animation} onAnimationEnd={onAnimationEnd} onClick={hideToast}>
+        <div role="alert" className={toastClass} animation={animation} onAnimationEnd={onAnimationEnd} onClick={hideToast}>
             <p>
                 {toastMessage}
             </p>

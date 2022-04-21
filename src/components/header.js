@@ -6,7 +6,7 @@ import { useScrollTo } from "../hooks";
 
 
 const Header = (props) => {
-  const { onHover, onMouseOut, onClick, show } = props
+  const { onMouseEnter, onMouseOut, show } = props
   const { onClickHashScrollTo } = useScrollTo()
   
   return (
@@ -14,22 +14,23 @@ const Header = (props) => {
       <header>
           <div className="profile-image">
               <img src={ProfileImage} 
-                    onMouseEnter={() => onHover("profile")} 
+                    onMouseEnter={() => onMouseEnter("profile")} 
                     width="100"
                     height="100"
+                    alt="A picture of clw8, the developer of this portfolio site :)"
                     onMouseOut={onMouseOut}/>
             </div>
         <nav>
           <a href="#projects" 
             onClick={onClickHashScrollTo}
-            onMouseEnter={(event) => onHover(event.target.hash)} 
+            onMouseEnter={(event) => onMouseEnter(event.target.hash)} 
             onMouseOut={onMouseOut}>Projects</a>
           <a href={ChrisResumePDF}
-          onMouseEnter={(event) => onHover("resume")} 
+          onMouseEnter={(event) => onMouseEnter("resume")} 
           onMouseOut={onMouseOut}>Resume</a>
           <a href="#contact"
             onClick={onClickHashScrollTo}
-            onMouseEnter={(event) => onHover(event.target.hash)} 
+            onMouseEnter={(event) => onMouseEnter(event.target.hash)} 
             onMouseOut={onMouseOut}>Contact</a>
         </nav>
       </header>

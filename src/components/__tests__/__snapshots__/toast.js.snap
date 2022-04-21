@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Toast renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    style="min-height: 100vh;"
+  >
+    Home page
+    <div
+      animation="toast-in"
+      class="toast toast--success"
+      role="alert"
+    >
+      <p>
+        hi there!
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;

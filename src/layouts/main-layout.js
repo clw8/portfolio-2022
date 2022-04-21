@@ -5,6 +5,8 @@ import ProfileImage from "../images/main-image.jpeg"
 import {Helmet} from "react-helmet"
 import { throttle } from "../utils";
 import Fade from 'react-reveal/Fade';
+import ToastProvider from "../context-providers/toast-provider";
+
 // import * as Favicons from "../images/favicons"
 
 const typedJsStrings = {
@@ -136,9 +138,11 @@ const MainLayout = (props) => {
           <meta name="msapplication-config" content="images/browserconfig.xml" />
           <meta name="theme-color" content="#ffffff" />
         </Helmet>
-        <Header onHover={createTyped} onMouseOut={onLinkMouseOut} show={showPageFirstLoad} />
+        <Header onMouseEnter={createTyped} onMouseOut={onLinkMouseOut} show={showPageFirstLoad} />
 
-        {showPageFirstLoad && childrenWithProps}
+        <ToastProvider>
+          {showPageFirstLoad && childrenWithProps}
+        </ToastProvider>
 
         <p ref={typedRef} className="sync-text"></p>
 

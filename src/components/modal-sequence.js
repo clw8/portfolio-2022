@@ -29,7 +29,7 @@ const ModalSequence = forwardRef((props, ref) => {
 
     // close ALL modals, regardless of modal history
     const exitModalSequence = () => {
-        onExitModalSequence()
+        onExitModalSequence && onExitModalSequence()
         setShowIndex(false)
         setModalHistory([])
     }

@@ -9,13 +9,23 @@ const ModalSequence = forwardRef((props, ref) => {
     const [popStateAnimation, setPopStateAnimation] = useState(false)
 
     useImperativeHandle(ref, () => ({
-        openSequence: (index = 0) => {
-            setShowIndex(index)
-        },
         exitModalSequence: exitModalSequence,
         goToNext,
-        goToPrevious
+        goToPrevious,
+        goToIndex
     }))
+
+    const goToIndex = (index) => {
+        setShowIndex(index)
+        if (!modalHistory.length) {
+            setModalHistory([index])
+            window.history.pushState({}, "/")
+        } else {
+            setShowIndex(index)
+            setModalHistory((oldHistory) => [...oldHistory, index])
+            window.history.pushState({}, "/")
+        }
+    }
 
     // close ALL modals, regardless of modal history
     const exitModalSequence = () => {
@@ -26,16 +36,16 @@ const ModalSequence = forwardRef((props, ref) => {
 
     // programatically trigger the next modal in the sequence with goToNext
     const goToNext = () => {
-        setShowIndex(showIndex + 1)
-        setModalHistory((oldHistory) => [...oldHistory, showIndex + 1])
-        window.history.pushState({}, "/")
+        if (showIndex) {
+            goToIndex(showIndex + 1)
+        }
     }
     
     // programatically trigger the previous modal in the sequence with goToPrevious
     const goToPrevious = () => {
-        setShowIndex(showIndex - 1)
-        setModalHistory((oldHistory) => [...oldHistory, showIndex - 1])
-        window.history.pushState({}, "/")
+        if (showIndex) {
+            goToIndex(showIndex - 1)
+        }
     }
 
     // on the brownser back button, return the user to the previous modal
@@ -88,8 +98,7 @@ const ModalSequence = forwardRef((props, ref) => {
 
         const onOpenModal = () => {
             if (!modalHistory.length) {
-                setModalHistory([showIndex])
-                window.history.pushState({}, "/")
+                goToIndex(index)
             }
         }
 

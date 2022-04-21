@@ -33,14 +33,11 @@ const IndexPage = ({ createTyped }) => {
 
   const onProjectCardClick = (index) => {
     setAnimation(1)
-    modalSequenceRef.current.openSequence(index)
-    //!initialContentAnimationPlayState && setInitialContentAnimationPlayState(true)
-    // setCurrentModalIndex(index)
+    modalSequenceRef.current.goToIndex(index)
   }
 
   const onExitModalSequence = () => {
     setAnimation(0)
-    // setCurrentModalIndex(false)
   }
 
   //const projectModalShown = currentModalIndex !== false

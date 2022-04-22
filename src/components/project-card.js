@@ -13,7 +13,7 @@ const ProjectCard = (props) => {
             <video muted loop autoPlay src={datum.image} type="video/mp4" />
             )}
           {datum.tag === "img" && (
-            <img src={datum.image} />
+            <img src={datum.image} alt="Project image"/>
             )}
         </div>
         <div className="project-card__bottom" style={datum.bottomTextStyle}>

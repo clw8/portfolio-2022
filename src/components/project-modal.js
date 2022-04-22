@@ -65,7 +65,7 @@ const ProjectModal = (props) => {
     >
       <Fragment>
         <div className="project-modal__close" onClick={onCloseIconClick}>
-          <img src={CloseIcon} />
+          <img src={CloseIcon} alt="Close Modal"/>
         </div>
         <div className="modal__content">
           <div className="modal__text">
@@ -75,6 +75,7 @@ const ProjectModal = (props) => {
             className="project-modal__image"
             style={datum.modalImageStyle}
             src={datum.modalImage}
+            alt="Image of the project"
           />
           <div className="modal__text">{datum.detail_html}</div>
         </div>
@@ -84,6 +85,7 @@ const ProjectModal = (props) => {
             className="project-modal__arrow project-modal__arrow--right"
             src={RightArrow}
             onClick={onRightArrowClick}
+            alt="Right Arrow (go to next modal)"
           />
         )}
 
@@ -92,6 +94,7 @@ const ProjectModal = (props) => {
             className="project-modal__arrow project-modal__arrow--left"
             src={RightArrow}
             onClick={onLeftArrowClick}
+            alt="Left Arrow (go to previous modal)"
           />
         )}
       </Fragment>

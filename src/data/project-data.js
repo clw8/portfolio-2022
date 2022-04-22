@@ -35,9 +35,9 @@ const projectData = [
       <p>There were two areas in this project which I contributed to: a)  back-end feature to automatically approve claimed Youtube videos using the Youtube Content API b) front-end web development for the main app, as well as the yet-to-be-released Artists app. I like to talk about this back-end feature, as this was such an interesting project from a personal development point of view. I learnt how to decouple my code, make my feature/service scaleable for foreseeable future plans, write in a readable way, and navigate the messiness of dealing with third-party APIs!</p>
       <p>The challenges of developing the main web app were that the code was unfamiliar, and editing the style proved unforgiving! With the Artists app, I enjoyed being given the full responsibility for developing the React app, and I used my past architectural know-how and component development to create something that I was proud to be able to hand over to the team as a fully-functioning, but yet-unconnected-to-the-API front-end app.</p>
       <h3>Have a look for yourself</h3>
-      <a className="icon-flex icon-flex__website" href="https://www.redbullsoundsupply.com">
+      <a className="icon-flex icon-flex__website" target="_blank" rel="noreferrer" href="https://www.redbullsoundsupply.com">
       View the Red Bull Sound Supply App
-        <img src={ExternalLinkIcon} />
+        <img src={ExternalLinkIcon} alt="Open link in another tab"/>
       </a>
     </Fragment>
   },
@@ -64,17 +64,17 @@ const projectData = [
         <h3>Have a look for yourself</h3>
 
         <div className="icon-flex__container">
-          <a className="icon-flex icon-flex__store" href="https://apps.apple.com/app/classninjas-mathe-lernen/id1488922442">
-            <img src={AppleStoreImage} />
+          <a className="icon-flex icon-flex__store" href="https://apps.apple.com/app/classninjas-mathe-lernen/id1488922442" target="_blank" rel="noreferrer">
+            <img src={AppleStoreImage} alt="Apple Store Icon"/>
             </a>
         
-            <a className="icon-flex icon-flex__store" href="https://play.google.com/store/apps/details?id=com.classninjas">
-              <img src={GooglePlayImage} />
+            <a className="icon-flex icon-flex__store" href="https://play.google.com/store/apps/details?id=com.classninjas" target="_blank" rel="noreferrer">
+              <img src={GooglePlayImage} alt="Google Play Icon"/>
           </a>
         </div>
-        <a className="icon-flex icon-flex__website icon-flex__website--cn" href="https://www.classninjas.com/app">
+        <a className="icon-flex icon-flex__website icon-flex__website--cn" href="https://www.classninjas.com/app" target="_blank" rel="noreferrer">
             View ClassNinja's Homepage (in German!)
-              <img src={ExternalLinkIcon} />
+              <img src={ExternalLinkIcon} alt="Open link in another tab"/>
         </a>
       </Fragment>
   },
@@ -101,9 +101,9 @@ const projectData = [
       
         </ul>
       <h3>Have a look for yourself</h3>
-      <a className="icon-flex icon-flex__website icon-flex__website--neoh" href="https://www.neoh.com/de-de">
+      <a className="icon-flex icon-flex__website icon-flex__website--neoh" href="https://www.neoh.com/de-de" target="_blank" rel="noreferrer">
       NEOH's homepage
-        <img src={ExternalLinkIcon} />
+        <img src={ExternalLinkIcon} alt="Open link in another tab"/>
       </a>
     </Fragment>
   },
@@ -127,9 +127,9 @@ const projectData = [
       <p>I contributed to building the initial versions of the influencer and admin apps with Vue. The difficulty here was trying to show all the data that we had available in a neat and readable format. We ended up building a platform (web and native) for influencers that showed all the metrics of their ad performance, with smooth front-end logic to enable users to sort and filter through campaigns and tracking links, as well as well-considered components for graphs showing data for clicks and conversions. The highlight was definitely getting to develop the native app from scratch with Jésus and using Alex's awesome designs.</p>
       <h3>Have a look for yourself</h3>
       <p>
-        <a className="icon-flex icon-flex__website" href="https://www.hisharethat.com">
+        <a className="icon-flex icon-flex__website" href="https://www.hisharethat.com" target="_blank" rel="noreferrer">
             hi!share.that's homepage
-              <img src={ExternalLinkIcon} />
+              <img src={ExternalLinkIcon} alt="Open link in another tab"/>
         </a>
         (unfortunately access to the influencer app is restricted to those with a following of 3000 or above)
       </p>
@@ -154,9 +154,9 @@ const projectData = [
         <img src={IntelligentGridLibrary} />
       </div>
       <h3>Have a look for yourself</h3>
-      <a className="icon-flex icon-flex__website" href="https://www.sarahhouben.com">
+      <a className="icon-flex icon-flex__website" href="https://www.sarahhouben.com" target="_blank" rel="noreferrer">
           Sarah's awesome website
-            <img src={ExternalLinkIcon} />
+            <img src={ExternalLinkIcon} alt="Open link in another tab"/>
       </a>
     </Fragment>
   },
@@ -176,14 +176,14 @@ const projectData = [
       <p>The personal website (for Rika Hemmi) was vanilla Javascript all the way. It was a great learning experience to understand what I could do without resorting to a framework. I was also really happy to have relied upon my own skills for designing the website and creating a unique felt-wool brand experience (logo included!). After one or two rounds of back and forth, I managed to provide Rika with a website that she was really excited to show the world. The next project was her brand, Soseisoudou, was slightly less involved in terms of Javascript, as the BASE did most of the work for us there; most of the work was custom styling and alignment of the design with her personal website. Both of these websites were great learning experiences, that helped me develop an eye for detail in my later projects.</p>
 
       <h3>Have a look for yourself</h3>
-      <a className="icon-flex icon-flex__website" href="https://www.rikahemmi.jp">
+      <a className="icon-flex icon-flex__website" href="https://www.rikahemmi.jp" target="_blank" rel="noreferrer">
           Rika's personal website
-            <img src={ExternalLinkIcon} />
+            <img src={ExternalLinkIcon} alt="Open link in another tab"/>
       </a>
       <br />
-      <a className="icon-flex icon-flex__website" href="https://www.soseisoudou.jp">
+      <a className="icon-flex icon-flex__website" href="https://www.soseisoudou.jp" target="_blank" rel="noreferrer">
           Soseisoudou's website
-            <img src={ExternalLinkIcon} />
+            <img src={ExternalLinkIcon} alt="Open link in another tab"/>
       </a>
     </Fragment>
   },

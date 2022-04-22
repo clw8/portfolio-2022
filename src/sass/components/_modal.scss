@@ -188,14 +188,19 @@
         position: absolute;
         top: 1rem;
         right: 2rem;
-        opacity: 0.6;
+        // opacity: 0.6;
         cursor: pointer;
+        color: $color-secondary;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        opacity: 0.7;
+
 
         @include mq("tablet") {
             top: 2rem;
             right: 5rem;
         }
-        
+
         img {
             width: .8rem;
 
@@ -245,6 +250,35 @@
     &__content {
         display: flex;
         justify-content: center;
+    }
+
+    &__close {
+        color: $color-secondary;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        opacity: 0.7;
+
+        position: absolute;
+        top: 1rem;
+        right: 2rem;
+        cursor: pointer;
+
+        @include mq("tablet") {
+            top: 2rem;
+            right: 5rem;
+        }
+
+        img {
+            width: .8rem;
+
+            @include mq("tablet") {        
+                width: 0.9rem;
+            }
+        }
+
+        &:hover {
+            opacity: 1;
+        }
     }
 
     &__form {

@@ -12,8 +12,8 @@ const ProjectModal = (props) => {
     data,
     goToNext,
     goToPrevious,
-    goBackToPreviousModal,
-    onOpenModal,
+    exitModalSequence,
+    goBackInModalHistory,
     show,
     prevShowIndex,
     showIndex,
@@ -33,7 +33,7 @@ const ProjectModal = (props) => {
   };
 
   const onCloseIconClick = () => {
-    goBackToPreviousModal && goBackToPreviousModal(true);
+    exitModalSequence && exitModalSequence();
   };
   const onRightArrowClick = () => {
     goToNext && goToNext();
@@ -44,25 +44,24 @@ const ProjectModal = (props) => {
   };
 
   useEffect(() => {
-    if (show) {
-      onOpenModal && onOpenModal();
-    } else {
-      goBackToPreviousModal && goBackToPreviousModal();
-    }
-  }, [show]);
-
-  useEffect(() => {
     // preload image
     let img = new Image();
     img.src = datum.modalImage;
   }, []);
+
+  const onClose = (event) => {
+    // if there is an event, we know we want to go back in the sequence history
+    if (event) {
+      goBackInModalHistory()
+    }
+  }
 
   return (
     <Modal
       animations={animations}
       style={{ background: datum.background }}
       show={show}
-      usePopState={false}
+      onClose={onClose}
     >
       <Fragment>
         <div className="project-modal__close" onClick={onCloseIconClick}>

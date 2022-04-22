@@ -7,7 +7,7 @@ import { useToast } from '../hooks'
 
 
 function ContactFormModal(props) {
-  const { show, onClose, onNavigateBack } = props;
+  const { show, onClose } = props;
   const {
     register,
     handleSubmit,
@@ -38,12 +38,10 @@ function ContactFormModal(props) {
       data,
     })
     .then((response) => {
-      console.log(errors)
         setIsSubmitting(false)
         showSuccessToast("Thank you for getting in contact. I will get back to you soon :)")
       })
       .catch((error) => {
-        console.log(error, errors)
         showErrorToast("Oops! There was a network problem. Please check your internet connection.")
         setIsSubmitting(false)
       });
@@ -54,9 +52,9 @@ function ContactFormModal(props) {
   };
 
   return (
-    <Modal show={show} onNavigateBack={onNavigateBack} className="contact-form-modal">
+    <Modal show={show} onClose={onClose} className="contact-form-modal">
       <Fragment>
-        <div className="project-modal__close" onClick={onCloseIconClick}>
+        <div className="contact-form-modal__close" onClick={onCloseIconClick}>
           <img src={CloseIcon} />
         </div>
         <div className="modal__content contact-form-modal__content">

@@ -1,4 +1,4 @@
-import {cleanup, fireEvent, render, waitFor } from '@testing-library/react';
+import {cleanup, fireEvent, render, act } from '@testing-library/react';
 import "@testing-library/jest-dom"
 import React, { useEffect } from "react"
 
@@ -7,22 +7,19 @@ import { useToast } from '../../hooks';
 
 const Layout = ({children}) => {
     return (
-        <div style={{minHeight: "100vh"}}>
+        <div style={{minHeight: "100vh", position: "relative"}}>
             <ToastProvider>
                 {children}
             </ToastProvider>
         </div>
     )
 }
-
+let showToast;
 const Page = () => {
     const { showSuccessToast } = useToast()
+    showToast = () => showSuccessToast("hi there!")
 
-    useEffect(() => {
-        showSuccessToast("hi there!")
-    }, [])
-
-    return "Home page"
+    return <div style={{ height: "1400px" }}>Home page</div>
 }
 
 describe("Toast", () => {
@@ -32,9 +29,12 @@ describe("Toast", () => {
             (<Layout>
                 <Page />
             </Layout>))
-    
-        toast = getByRole("alert")
-        asFragmentVariable = asFragment
+
+        act(() => {
+            showToast()
+            toast = getByRole("alert")
+            asFragmentVariable = asFragment
+        })
     })
 
     it ("renders correctly", () => {
@@ -43,15 +43,25 @@ describe("Toast", () => {
         expect(firstRender).toMatchSnapshot()
     })
 
-    it("is triggered byshowSuccessToast function", () => {
-        fireEvent.animationEnd(toast)
+    it("is triggered successfully", () => {
+        act(() => {
+            fireEvent.animationEnd(toast)
+        })
+
+        expect(toast).toHaveAttribute("animation", "toast-in-end")
+
         expect(toast).toBeVisible()
         expect(toast).toHaveTextContent("hi there!")
     })
-
+    
     it("hides toast on user click", () => {
-        fireEvent.click(toast)
         fireEvent.animationEnd(toast)
+        act(() => {
+            fireEvent.click(toast)
+            fireEvent.animationEnd(toast)
+        })
+
+        expect(toast).not.toHaveAttribute("animation", "toast-out-end")
         expect(toast).not.toHaveTextContent("hi there!")
     })
 

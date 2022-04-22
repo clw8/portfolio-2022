@@ -3,9 +3,13 @@
 exports[`Toast renders correctly 1`] = `
 <DocumentFragment>
   <div
-    style="min-height: 100vh;"
+    style="min-height: 100vh; position: relative;"
   >
-    Home page
+    <div
+      style="height: 1400px;"
+    >
+      Home page
+    </div>
     <div
       animation="toast-in"
       class="toast toast--success"

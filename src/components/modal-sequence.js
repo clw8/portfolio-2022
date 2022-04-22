@@ -1,7 +1,6 @@
-import React, { useEffect, useState, useImperativeHandle, forwardRef, use } from "react"
-import Fade from 'react-reveal/Fade';
+import React, { useCallback, useState, useImperativeHandle, forwardRef, use } from "react"
 
-// this is a wrapper component for showing modals to the user one after the other
+// this is a wrapper component for showing modals to the user one after the other like a carousel
 const ModalSequence = forwardRef((props, ref) => {
     const { data, onExitModalSequence, renderModal } = props
     const [modalHistory, setModalHistory] = useState([])
@@ -12,7 +11,8 @@ const ModalSequence = forwardRef((props, ref) => {
         exitModalSequence: exitModalSequence,
         goToNext,
         goToPrevious,
-        goToIndex
+        goToIndex,
+        goBackInModalHistory
     }))
 
     const goToIndex = (index) => {
@@ -35,72 +35,67 @@ const ModalSequence = forwardRef((props, ref) => {
     }
 
     // programatically trigger the next modal in the sequence with goToNext
-    const goToNext = () => {
-        if (showIndex) {
+    const goToNext = () => {    
+        if (typeof showIndex === "number") {
             goToIndex(showIndex + 1)
         }
     }
     
     // programatically trigger the previous modal in the sequence with goToPrevious
     const goToPrevious = () => {
-        if (showIndex) {
+        if (showIndex) { //not 0
             goToIndex(showIndex - 1)
         }
     }
 
-    // on the brownser back button, return the user to the previous modal
-    useEffect(() => {
-        const eventListenerPopState = () => {
-            if (modalHistory.length) {
-                //TODO: traverse through modal history on back button
-                // edit history and transition to modal shown to user before this one
-                const newHistory = modalHistory.slice()
-                newHistory.pop()
-                const newShowIndex = newHistory[newHistory.length - 1]
-                console.log(newShowIndex, showIndex)
-                setPopStateAnimation(true)
-                if (typeof newShowIndex !== "undefined") {
-                    if (newShowIndex > showIndex) {
-                        // setModalHistory(newHistory)
-                        console.log("newShowIndex", newShowIndex)
-                        setShowIndex(newShowIndex)
-                    } else if (newShowIndex < showIndex) {
-                        console.log("newShowIndex", newShowIndex)
-                        setShowIndex(newShowIndex)
-                        // setModalHistory(newHistory)
-                    }
-                } else {
-                    exitModalSequence()
+    const goBackInModalHistory = () => {
+        if (modalHistory.length) {
+            const newHistory = modalHistory.slice()
+            newHistory.pop()
+            const newShowIndex = newHistory[newHistory.length - 1]
+            setPopStateAnimation(true)
+            if (typeof newShowIndex !== "undefined") {
+                if (newShowIndex > showIndex) {
+                    setShowIndex(newShowIndex)
+                    // setModalHistory(newHistory.slice())
+                } else if (newShowIndex < showIndex) {
+                    setShowIndex(newShowIndex)
+                    // setModalHistory(newHistory.slice())
                 }
-
-                setTimeout(() => {
-                    // set new history after modal animation finishes
-                    setModalHistory(newHistory)
-                    setPopStateAnimation(false)
-                }, 500) // allow user to set duration?
+            } else {
+                exitModalSequence()
             }
+
+            // set new history after modal animation finishes
+            setTimeout(() => {
+                setModalHistory(newHistory.slice())
+                setPopStateAnimation(false)
+            }, 500) // allow user to set duration?
+        } else {
+            exitModalSequence()
         }
-        window.addEventListener("popstate", eventListenerPopState)
+    }
+
+    // on the brownser back button, return the user to the previous modal (or close all modals if there is no previous modal)
+    // useEffect(() => {
+    //     const eventListenerPopState = () => {
+         
+    //     }
+    //     window.addEventListener("popstate", eventListenerPopState)
   
-        return () => window.removeEventListener("popstate", eventListenerPopState)
-    }, [showIndex, modalHistory])
+    //     return () => window.removeEventListener("popstate", eventListenerPopState)
+    // }, [showIndex, modalHistory])
+
+    // useEffect(() => {
+    //     if (typeof showIndex === "number") {
+    //         if (!modalHistory.length) {
+    //             exitModalSequence()
+    //         }
+    //     }
+    // }, [showIndex])
 
     // data should be an array of objects, each object is then mapped to a modal, which is in turn determined by the renderModal prop
     return data.map((datum, index) => {
-        // the user may choose to exit from the whole modal sequence at any point by setting allModals to true
-        // if allModals is falsy, then closing a modal returns it the the previously opened modal (if there is one)
-        // ...goToPrevious handles this returning to a previous modal, and should be attached to a clickable element
-        const goBackToPreviousModal = (allModals) => {
-            if (allModals || !modalHistory.length) {
-                exitModalSequence()
-            }
-        }
-
-        const onOpenModal = () => {
-            if (!modalHistory.length) {
-                goToIndex(index)
-            }
-        }
 
         const showModal = showIndex === index;
         const prevShowIndex = popStateAnimation ? modalHistory[modalHistory.length - 1] : modalHistory[modalHistory.length - 2];
@@ -111,8 +106,8 @@ const ModalSequence = forwardRef((props, ref) => {
             data, 
             goToNext, 
             goToPrevious, 
-            goBackToPreviousModal, 
-            onOpenModal, 
+            exitModalSequence,
+            goBackInModalHistory,
             show: showModal, 
             showIndex, 
             prevShowIndex,
@@ -129,5 +124,5 @@ const ModalSequence = forwardRef((props, ref) => {
         }
     })
 })
-// problem changing show causes allModalsClose, which sets the main animatin and the modal index
+
 export default ModalSequence

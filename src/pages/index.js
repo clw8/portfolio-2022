@@ -156,7 +156,7 @@ const IndexPage = ({ createTyped }) => {
 
           <Fade bottom cascade distance={"20px"} duration={2000}>
             <div className="content__section" id="contact">
-              <h2>Get in contact</h2>
+              <h2>Get in contact.</h2>
               <p>
                 Let's discuss what you need and what I can offer. Please find my
                 resume{" "}
@@ -249,7 +249,6 @@ const IndexPage = ({ createTyped }) => {
 
       <ContactFormModal
         show={showContactFormModal}
-        onNavigateBack={closeContactForm}
         onClose={closeContactForm}
       />
 

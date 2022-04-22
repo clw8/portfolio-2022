@@ -13,7 +13,9 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "jest"
+    "test": "jest",
+    "cy:open": "cypress open",
+    "test:e2e": "start-server-and-test develop http://localhost:8000 cy:open"
   },
   "dependencies": {
     "@formspree/react": "^2.2.4",
@@ -39,11 +41,14 @@
     "typed.js": "^2.0.12"
   },
   "devDependencies": {
+    "@testing-library/cypress": "^8.0.2",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^12.1.5",
+    "axe-core": "^4.4.1",
     "babel-jest": "^27.5.1",
     "babel-preset-gatsby": "^2.12.1",
     "cypress": "^9.5.4",
+    "cypress-axe": "^0.14.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.5.1",
     "react-test-renderer": "^17.0.1",

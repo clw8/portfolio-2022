@@ -8,8 +8,6 @@ describe("Header", () => {
     const onMouseEnter = () => {}
     const onMouseOut = () => {}
     const show = true;
-    // const component = renderer
-    //   .create(<Header {...{onMouseEnter, onMouseOut, show}} />)
 
     const {getByRole, asFragment} = render(<Header {...{onMouseEnter, onMouseOut, show}} />)
     const firstRender = asFragment()

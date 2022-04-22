@@ -68,7 +68,7 @@ const IndexPage = ({ createTyped }) => {
         onAnimationEnd={onAnimationEnd}
         {...pageScrollRestoration}
       >
-        <div className="content">
+        <article className="content">
           <div id="typed-strings">
             <h1>Welcome.</h1>
           </div>
@@ -136,7 +136,7 @@ const IndexPage = ({ createTyped }) => {
             </div>
           </Fade>
 
-          <div
+          <article
             className="content__section content__section--border"
             id="projects"
           >
@@ -152,10 +152,10 @@ const IndexPage = ({ createTyped }) => {
                 />
               ))}
             </div>
-          </div>
+          </article>
 
           <Fade bottom cascade distance={"20px"} duration={2000}>
-            <div className="content__section" id="contact">
+            <article className="content__section" id="contact">
               <h2>Get in contact.</h2>
               <p>
                 Let's discuss what you need and what I can offer. Please find my

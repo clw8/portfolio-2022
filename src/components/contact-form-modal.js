@@ -55,7 +55,7 @@ function ContactFormModal(props) {
     <Modal show={show} onClose={onClose} className="contact-form-modal">
       <Fragment>
         <div className="contact-form-modal__close" onClick={onCloseIconClick}>
-          <img src={CloseIcon} />
+          <img src={CloseIcon} alt="Close Modal" />
         </div>
         <div className="modal__content contact-form-modal__content">
 
@@ -74,6 +74,8 @@ function ContactFormModal(props) {
                 {...register("name", {
                   required: { value: true, message: "Please enter your name" },
                 })}
+                required
+                noValidate
               />
             </div>
             <div className="input__container">
@@ -89,6 +91,7 @@ function ContactFormModal(props) {
                   },
                 })}
                 type="email"
+                required
                 noValidate
               />
             </div>
@@ -104,6 +107,8 @@ function ContactFormModal(props) {
                     message: "I appreciate blank emails, but that probably wasn't your intention."
                   }
                 })}
+                required
+                noValidate
                 name="message"
               />
             </div>

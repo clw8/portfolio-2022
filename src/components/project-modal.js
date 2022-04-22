@@ -64,7 +64,7 @@ const ProjectModal = (props) => {
       onClose={onClose}
     >
       <Fragment>
-        <div className="project-modal__close" onClick={onCloseIconClick}>
+        <div className="project-modal__close" onClick={onCloseIconClick} aria-label="Close Modal">
           <img src={CloseIcon} alt="Close Modal"/>
         </div>
         <div className="modal__content">
@@ -86,6 +86,7 @@ const ProjectModal = (props) => {
             src={RightArrow}
             onClick={onRightArrowClick}
             alt="Right Arrow (go to next modal)"
+            aria-label="Next Project"
           />
         )}
 
@@ -95,6 +96,7 @@ const ProjectModal = (props) => {
             src={RightArrow}
             onClick={onLeftArrowClick}
             alt="Left Arrow (go to previous modal)"
+            aria-label="Previous Project"
           />
         )}
       </Fragment>

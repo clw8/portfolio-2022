@@ -10,7 +10,6 @@ const ProjectCard = (props) => {
       <article
         className="project-card"
         onClick={onClick}
-        aria-description="Project card"
       >
         <div className="project-card__top">
           {datum.tag === "video" && (
@@ -26,8 +25,8 @@ const ProjectCard = (props) => {
           {datum.tag === "img" && <img src={datum.image} alt="Project image" />}
         </div>
         <div className="project-card__bottom" style={datum.bottomTextStyle}>
-          <h4 aria-description="Project name">{datum.header}</h4>
-          <p aria-description="Project description">{datum.text}</p>
+          <h4>{datum.header}</h4>
+          <p>{datum.text}</p>
         </div>
       </article>
     </Fade>

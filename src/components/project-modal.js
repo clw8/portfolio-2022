@@ -116,5 +116,5 @@ ProjectModal.propTypes = {
   goBackInModalHistory: PropTypes.func,
   show: PropTypes.bool,
   prevShowIndex: PropTypes.number,
-  showIndex: PropTypes.number,
+  showIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
 };

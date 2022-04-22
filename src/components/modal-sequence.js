@@ -1,4 +1,4 @@
-import React, { useState, useImperativeHandle, forwardRef, use } from "react"
+import React, { useState, useImperativeHandle, forwardRef, useEffect } from "react"
 import PropTypes from 'prop-types'
 
 // this is a wrapper component for showing modals to the user one after the other like a carousel
@@ -37,6 +37,7 @@ const ModalSequence = forwardRef((props, ref) => {
 
     // programatically trigger the next modal in the sequence with goToNext
     const goToNext = () => {    
+        console.log("goToNext", showIndex)
         if (typeof showIndex === "number") {
             goToIndex(showIndex + 1)
         }
@@ -44,6 +45,7 @@ const ModalSequence = forwardRef((props, ref) => {
     
     // programatically trigger the previous modal in the sequence with goToPrevious
     const goToPrevious = () => {
+        console.log("goToPrevious")
         if (showIndex) { //not 0
             goToIndex(showIndex - 1)
         }
@@ -113,5 +115,5 @@ export default ModalSequence
 ModalSequence.propTypes = {
 	data: PropTypes.array.isRequired, 
     onExitModalSequence: PropTypes.func, 
-    renderModal: PropTypes.node.isRequired,
+    renderModal: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
 };

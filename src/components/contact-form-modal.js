@@ -4,7 +4,7 @@ import { Checkbox, Modal } from ".";
 import CloseIcon from "../images/icons/cancel.png";
 import axios from "axios";
 import { useToast } from '../hooks'
-
+import PropTypes from 'prop-types'
 
 function ContactFormModal(props) {
   const { show, onClose } = props;
@@ -140,3 +140,8 @@ function ContactFormModal(props) {
 }
 
 export default ContactFormModal;
+
+ContactFormModal.propTypes = {
+	show: PropTypes.bool.isRequired,
+	onClose: PropTypes.func,
+};

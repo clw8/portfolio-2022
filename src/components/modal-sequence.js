@@ -1,4 +1,5 @@
-import React, { useCallback, useState, useImperativeHandle, forwardRef, use } from "react"
+import React, { useState, useImperativeHandle, forwardRef, use } from "react"
+import PropTypes from 'prop-types'
 
 // this is a wrapper component for showing modals to the user one after the other like a carousel
 const ModalSequence = forwardRef((props, ref) => {
@@ -76,24 +77,6 @@ const ModalSequence = forwardRef((props, ref) => {
         }
     }
 
-    // on the brownser back button, return the user to the previous modal (or close all modals if there is no previous modal)
-    // useEffect(() => {
-    //     const eventListenerPopState = () => {
-         
-    //     }
-    //     window.addEventListener("popstate", eventListenerPopState)
-  
-    //     return () => window.removeEventListener("popstate", eventListenerPopState)
-    // }, [showIndex, modalHistory])
-
-    // useEffect(() => {
-    //     if (typeof showIndex === "number") {
-    //         if (!modalHistory.length) {
-    //             exitModalSequence()
-    //         }
-    //     }
-    // }, [showIndex])
-
     // data should be an array of objects, each object is then mapped to a modal, which is in turn determined by the renderModal prop
     return data.map((datum, index) => {
 
@@ -126,3 +109,9 @@ const ModalSequence = forwardRef((props, ref) => {
 })
 
 export default ModalSequence
+
+ModalSequence.propTypes = {
+	data: PropTypes.array.isRequired, 
+    onExitModalSequence: PropTypes.func, 
+    renderModal: PropTypes.node.isRequired,
+};

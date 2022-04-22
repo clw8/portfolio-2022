@@ -1,8 +1,8 @@
 import React, { useEffect, Fragment, useState } from "react";
-// import { useModal } from "../hooks";
 import RightArrow from "../images/icons/right-arrow.png";
 import CloseIcon from "../images/icons/cancel.png";
 import Modal from "./modal.js";
+import PropTypes from 'prop-types'
 
 //coupled with modal-sequence component, but with some small changes can be used as a standalone modal
 const ProjectModal = (props) => {
@@ -105,3 +105,16 @@ const ProjectModal = (props) => {
 };
 
 export default ProjectModal;
+
+ProjectModal.propTypes = {
+  index: PropTypes.number,
+  datum: PropTypes.object,
+  data: PropTypes.array,
+  goToNext: PropTypes.func,
+  goToPrevious: PropTypes.func,
+  exitModalSequence: PropTypes.func,
+  goBackInModalHistory: PropTypes.func,
+  show: PropTypes.bool,
+  prevShowIndex: PropTypes.number,
+  showIndex: PropTypes.number,
+};

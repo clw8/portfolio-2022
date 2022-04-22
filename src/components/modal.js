@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react"
-import Fade from 'react-reveal/Fade';
+import PropTypes from 'prop-types'
 
 const defaultAnimations = {
     in: "in-right",
@@ -79,3 +79,11 @@ const Modal = (props) => {
 }
 
 export default Modal
+
+Modal.propTypes = {
+	style: PropTypes.object, 
+    show: PropTypes.bool, 
+    usePopState: PropTypes.bool, 
+	animations: PropTypes.object, 
+    onClose: PropTypes.func,
+};

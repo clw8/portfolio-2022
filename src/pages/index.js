@@ -240,9 +240,9 @@ const IndexPage = ({ createTyped }) => {
                   </svg>
                 </a>
               </div>
-            </div>
+            </article>
           </Fade>
-        </div>
+        </article>
 
         <img src={JedAdanFooterImage} className="footer-image" />
       </main>

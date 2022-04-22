@@ -1,3 +1,7 @@
+## Portfolio site
+This portfolio site was created in April 2022. Hopefully this provides a good example to how I would normally go about developing apps. I spent some time on component reusability and decoupling, and the file structure is similar to what I would normally use on a project. ALthough for the sake of time, I've left out E2E testing, I've included a small folder on unit testing, using jest and react testing library.
+
+
 <p align="center">
   <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
     <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />

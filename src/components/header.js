@@ -3,6 +3,7 @@ import ProfileImage from "../images/main-image.jpeg"
 import Fade from 'react-reveal/Fade';
 import ChrisResumePDF from "../images/Christopher_Walsh_CV.pdf";
 import { useScrollTo } from "../hooks";
+import PropTypes from 'prop-types'
 
 
 const Header = (props) => {
@@ -39,3 +40,9 @@ const Header = (props) => {
 }
 
 export default Header
+
+Header.propTypes = {
+	show: PropTypes.bool,
+  onMouseEnter: PropTypes.func,
+  onMouseOut: PropTypes.func
+};

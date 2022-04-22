@@ -111,6 +111,7 @@ const IndexPage = ({ createTyped }) => {
 
               <div className="content__flex">
                 <a
+                  role="none"
                   href="#projects"
                   className="scroll-p"
                   onClick={onClickHashScrollTo}

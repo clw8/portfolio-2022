@@ -148,6 +148,11 @@
         font-size: 10px;
         padding-bottom: 0;
         color: $black;
+        pointer-events: none;
+      }
+      
+      svg {
+        pointer-events: none;
       }
     }
 

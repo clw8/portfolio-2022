@@ -1,26 +1,26 @@
 .profile-image {
-    //margin: 2rem auto 1rem auto;
-    display: flex;
-    // justify-content: center;
-    
-    img {
-        position: relative;
-        left: 3px;
-        width: 60px;
-        height: 60px;
-        
-        @include mq("tablet-small") {
-            left: 4px;
-            width: 80px;
-            height: 80px;
-        }
+  //margin: 2rem auto 1rem auto;
+  display: flex;
+  // justify-content: center;
 
-        @include mq("tablet") {
-            width: 90px;
-            height: 90px;
-        }
-        border-radius: 50%;
-        object-fit: cover;
-        box-shadow: 9px 8px 17px -8px rgb(0 0 0 / 9%);
+  img {
+    position: relative;
+    left: 3px;
+    width: 60px;
+    height: 60px;
+
+    @include mq("tablet-small") {
+      left: 4px;
+      width: 80px;
+      height: 80px;
     }
+
+    @include mq("tablet") {
+      width: 90px;
+      height: 90px;
+    }
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 9px 8px 17px -8px rgb(0 0 0 / 9%);
+  }
 }

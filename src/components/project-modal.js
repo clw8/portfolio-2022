@@ -2,7 +2,7 @@ import React, { useEffect, Fragment, useState } from "react";
 import RightArrow from "../images/icons/right-arrow.png";
 import CloseIcon from "../images/icons/cancel.png";
 import Modal from "./modal.js";
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 
 //coupled with modal-sequence component, but with some small changes can be used as a standalone modal
 const ProjectModal = (props) => {
@@ -25,7 +25,7 @@ const ProjectModal = (props) => {
   const transitionRightOut =
     typeof prevShowIndex === "undefined" || showIndex <= prevShowIndex;
 
-    const animations = {
+  const animations = {
     in: transitionRightIn ? "in-right" : "in-left",
     inEnd: transitionRightIn ? "in-right-end" : "in-left-end",
     out: transitionRightOut ? "out-right" : "out-left",
@@ -52,9 +52,9 @@ const ProjectModal = (props) => {
   const onClose = (event) => {
     // if there is an event, we know we want to go back in the sequence history
     if (event) {
-      goBackInModalHistory()
+      goBackInModalHistory();
     }
-  }
+  };
 
   return (
     <Modal
@@ -64,8 +64,12 @@ const ProjectModal = (props) => {
       onClose={onClose}
     >
       <Fragment>
-        <div className="project-modal__close" onClick={onCloseIconClick} aria-label="Close Modal">
-          <img src={CloseIcon} alt="Close Modal"/>
+        <div
+          className="project-modal__close"
+          onClick={onCloseIconClick}
+          aria-label="Close Modal"
+        >
+          <img src={CloseIcon} alt="Close Modal" />
         </div>
         <div className="modal__content">
           <div className="modal__text">

@@ -7,10 +7,7 @@ const ProjectCard = (props) => {
 
   return (
     <Fade bottom cascade distance={"20px"} duration={2000}>
-      <article
-        className="project-card"
-        onClick={onClick}
-      >
+      <article className="project-card" onClick={onClick}>
         <div className="project-card__top">
           {datum.tag === "video" && (
             <video
@@ -37,5 +34,5 @@ export default ProjectCard;
 
 ProjectCard.propTypes = {
   datum: PropTypes.object,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
 };

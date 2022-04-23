@@ -34,7 +34,6 @@ const IndexPage = ({ createTyped }) => {
       showCursor: false,
       contentType: "null",
     });
-
   }, []);
 
   const onProjectCardClick = (index) => {

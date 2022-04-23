@@ -12,7 +12,7 @@ $bottom: 1.5rem;
 
 .toast {
   position: fixed;
-  z-index: z('toast');
+  z-index: z("toast");
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,18 +21,18 @@ $bottom: 1.5rem;
   padding-bottom: 1rem;
   border-radius: $border-radius;
   color: $black;
-  box-shadow: 0px -2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0px -2px 6px rgba(0, 0, 0, 0.1);
   background-color: $white;
   transform: translateY(100%) translateY($bottom);
   width: calc(100% - #{$grid-o-gutter--mob * 2});
   margin: 0 $grid-o-gutter--mob;
 
-  @include mq('tablet-small') {
+  @include mq("tablet-small") {
     width: calc(100% - #{$grid-o-gutter--tab * 2});
     margin: 0 $grid-o-gutter--tab;
   }
 
-  @include mq('desktop') {
+  @include mq("desktop") {
     width: calc(100% - #{$grid-o-gutter--dtp * 2});
     margin: 0 $grid-o-gutter--dtp;
   }
@@ -43,7 +43,7 @@ $bottom: 1.5rem;
 
   &--error {
     background-color: $error-bg;
-    
+
     p {
       color: $white;
     }
@@ -51,7 +51,7 @@ $bottom: 1.5rem;
 
   &--success {
     background-color: $success-bg;
-    
+
     p {
       color: $white;
     }
@@ -71,7 +71,7 @@ $bottom: 1.5rem;
     line-height: 158%;
     color: $white;
 
-    @include mq('tablet-small') {
+    @include mq("tablet-small") {
       font-size: 14px;
     }
   }
@@ -87,7 +87,6 @@ $bottom: 1.5rem;
     transform: translateY(0);
   }
 
-      
   &[animation="toast-out"] {
     animation-name: toastAnimation;
     animation-timing-function: ease-in; // inverse of in-right's function

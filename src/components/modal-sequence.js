@@ -46,10 +46,19 @@ const ModalSequence = forwardRef((props, ref) => {
     // programatically trigger the previous modal in the sequence with goToPrevious
     const goToPrevious = () => {
         console.log("goToPrevious")
-        if (showIndex) { //not 0
+        if (showIndex) { //not 0 or false
             goToIndex(showIndex - 1)
         }
     }
+
+    useEffect(() => {
+        const keyListener = () => {
+            console.log(modalHistory)
+        }
+        document.addEventListener("popstate", keyListener)
+
+        return () => document.removeEventListener("popstate", keyListener)
+    }, [showIndex, modalHistory])
 
     const goBackInModalHistory = () => {
         if (modalHistory.length) {

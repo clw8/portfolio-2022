@@ -1,16 +1,22 @@
 @keyframes bounce {
-  0%   { transform: translateY(2px); }
-  50%  { transform: translateY(-2px); }
-  100% { transform: translateY(2px); }
+  0% {
+    transform: translateY(2px);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+  100% {
+    transform: translateY(2px);
+  }
 }
 
 @keyframes contentHideAnimation {
   0% {
-      transform: translateX(-100%)
-    }
-    
+    transform: translateX(-100%);
+  }
+
   15% {
-    transform: translateX(-101%)
+    transform: translateX(-101%);
   }
 
   85% {
@@ -39,10 +45,10 @@
     //   animation-direction: reverse;
     //   animation-fill-mode: forwards;
     // }
-    
+
     // &__enter {
     //   // transform: translateX(0%)
-      
+
     //   animation-name: contentHideAnimation;
     //   animation-timing-function: cubic-bezier(.21,-.09,.72,0.45);
     //   animation-duration: 1s;
@@ -53,27 +59,27 @@
       //transform: translateX(0%);
 
       animation-name: contentHideAnimation;
-      animation-timing-function: cubic-bezier(.21,-.09,.72,0.45);
+      animation-timing-function: cubic-bezier(0.21, -0.09, 0.72, 0.45);
       animation-duration: 0.8s;
       animation-fill-mode: forwards;
-  }
-  
-  &[animation="1"] {
-    animation-name: contentHideAnimation;
-    animation-timing-function: cubic-bezier(.28,.55,.79,1.09);
-    animation-duration: 0.8s;
-    animation-direction: reverse;
-    animation-fill-mode: forwards;
-  }
+    }
 
-  &[animation="3"] {
+    &[animation="1"] {
+      animation-name: contentHideAnimation;
+      animation-timing-function: cubic-bezier(0.28, 0.55, 0.79, 1.09);
+      animation-duration: 0.8s;
+      animation-direction: reverse;
+      animation-fill-mode: forwards;
+    }
+
+    &[animation="3"] {
       transform: translateX(0);
-  }
-  
-  &[animation="4"] {
+    }
+
+    &[animation="4"] {
       transform: translateX(100%);
       //transform: translateX(0);
-  }
+    }
   }
 }
 
@@ -87,7 +93,7 @@
     @include mq("tablet-small") {
       padding: 2rem 2rem;
     }
-    
+
     @include mq("tablet") {
       padding: 2rem 4rem;
     }
@@ -99,7 +105,7 @@
     &--border {
       position: relative;
       margin-bottom: 1rem;
-      
+
       &::before {
         content: "";
         position: absolute;
@@ -107,7 +113,7 @@
         left: 1rem;
         right: 1rem;
         height: 1px;
-        background: rgba(0,0,0,0.1);
+        background: rgba(0, 0, 0, 0.1);
 
         @include mq("tablet-small") {
           left: 2rem;
@@ -123,10 +129,7 @@
           left: 6rem;
           right: 6rem;
         }
-        
-        
       }
-
     }
   }
 
@@ -136,11 +139,10 @@
     justify-content: center;
     flex-direction: column;
 
-
     .scroll-p {
       display: flex;
       opacity: 0.6;
-      
+
       p {
         margin-right: 1.5rem;
         text-transform: uppercase;
@@ -150,7 +152,7 @@
         color: $black;
         pointer-events: none;
       }
-      
+
       svg {
         pointer-events: none;
       }
@@ -185,9 +187,9 @@
   //   position: relative;
   //   border-right: 1px solid rgba(0, 0, 0, 0.2);
   //   padding-right: $separator-width;
-    
+
   //   box-sizing: content-box;
-    
+
   //   &__inner {
   //     width: 100%;
   //     padding: 2.5rem 2rem;
@@ -204,15 +206,15 @@
   //     @extend h1;
   //   }
 
-    // svg {
-    //   position: absolute;
-    //   transform-origin: top right;
-    //   transform: rotate( -90deg);
-    //   top: 0;
-    //   right: 0; // fallback
-    //   right: calc((100vh - var(--nav-height)) / 1680 * 40); // viewbox of svg is 1680 by 40
-    //   width: calc(100vh - var(--nav-height));
-    // }
+  // svg {
+  //   position: absolute;
+  //   transform-origin: top right;
+  //   transform: rotate( -90deg);
+  //   top: 0;
+  //   right: 0; // fallback
+  //   right: calc((100vh - var(--nav-height)) / 1680 * 40); // viewbox of svg is 1680 by 40
+  //   width: calc(100vh - var(--nav-height));
+  // }
   // }
 
   // &__right {

@@ -1,20 +1,20 @@
 const useScrollTo = () => {
+  const onClickHashScrollTo = (event) => {
+    event.preventDefault();
+    let hash = event.target.hash;
 
-    const onClickHashScrollTo = (event) => {
-        event.preventDefault();
-        let hash = event.target.hash
+    if (hash === "/") {
+      document.body.scrollIntoView(true);
+    } else {
+      document
+        .querySelector(hash)
+        .scrollIntoView({ block: "start", behavior: "smooth" });
+    }
+  };
 
-        if (hash === "/") {
-          document.body.scrollIntoView(true);
-        } else {
-          document.querySelector(hash).scrollIntoView({block:"start", behavior:"smooth"})
-        }
-        
-      }
+  return {
+    onClickHashScrollTo,
+  };
+};
 
-      return {
-          onClickHashScrollTo,
-      }
-}
-
-export default useScrollTo
+export default useScrollTo;

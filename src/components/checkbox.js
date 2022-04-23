@@ -21,6 +21,7 @@ function Checkbox(props) {
 				   checked={checked}
 				   className="checkbox__input"
 				   type="checkbox" id={id}
+           aria-invalid={!!error}
 				   value={id}/>
 			<label className="checkbox__label" htmlFor={id}>{props.children}</label>
 		</div>
@@ -32,7 +33,7 @@ export default Checkbox;
 Checkbox.propTypes = {
 	id: PropTypes.string.isRequired,
 	className: PropTypes.string,
-	error: PropTypes.string,
+	error: PropTypes.any,
 	checked: PropTypes.bool,
 	onChange: PropTypes.func
 };

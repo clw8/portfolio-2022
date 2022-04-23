@@ -20,26 +20,25 @@ function ContactFormModal(props) {
     },
   });
 
-  const { showErrorToast, showSuccessToast, toastTypes } = useToast();
+  const { showErrorToast, showSuccessToast } = useToast();
 
 
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const onSubmit = (data) => {
+  const onSubmit = (data, e) => {
+    console.log(e)
     setIsSubmitting(true)
     delete data.terms; // not needed
 
-    axios({
-      url: "https://formspree.io/f/mayvpkbo",
-      method: "post",
+    axios.post("https://formspree.io/f/mayvpkbo", data, {
       headers: {
         Accept: "application/json",
-      },
-      data,
+      }
     })
     .then((response) => {
         setIsSubmitting(false)
         showSuccessToast("Thank you for getting in contact. I will get back to you soon :)")
+        reset()
       })
       .catch((error) => {
         showErrorToast("Oops! There was a network problem. Please check your internet connection.")
@@ -59,7 +58,7 @@ function ContactFormModal(props) {
         </div>
         <div className="modal__content contact-form-modal__content">
 
-          <form onSubmit={handleSubmit(onSubmit)} className="contact-form-modal__form">
+          <form data-testid="form" noValidate onSubmit={handleSubmit(onSubmit)} className="contact-form-modal__form">
             <div className="input__container">
               <label htmlFor="name" 
               className="label label--input" 
@@ -75,6 +74,7 @@ function ContactFormModal(props) {
                   required: { value: true, message: "Please enter your name" },
                 })}
                 required
+                aria-invalid={!!errors?.name}
                 noValidate
               />
             </div>
@@ -92,6 +92,7 @@ function ContactFormModal(props) {
                 })}
                 type="email"
                 required
+                aria-invalid={!!errors?.email}
                 noValidate
               />
             </div>
@@ -108,6 +109,7 @@ function ContactFormModal(props) {
                   }
                 })}
                 required
+                aria-invalid={!!errors?.message}
                 noValidate
                 name="message"
               />
@@ -131,7 +133,7 @@ function ContactFormModal(props) {
               />
             </div>
 
-            <input type="submit"  disabled={isSubmitting} className="btn btn__primary contact-form-modal__submit" />
+            <input type="submit" disabled={isSubmitting} className="btn btn__primary contact-form-modal__submit" />
           </form>
         </div>
       </Fragment>

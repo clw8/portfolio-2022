@@ -3,119 +3,20 @@
 exports[`Modal Sequence renders correctly 1`] = `
 <DocumentFragment>
   <div
-    animation="out-right-end"
-    aria-hidden="true"
-    class="modal"
     role="dialog"
   >
-    <div
-      class="modal__inner"
-    >
-      <button>
-        Previous
-      </button>
-      <p>
-        test data here
-      </p>
-      <button>
-        Next
-      </button>
-      <button>
-        Close
-      </button>
-    </div>
-  </div>
-  <div
-    animation="out-right-end"
-    aria-hidden="true"
-    class="modal"
-    role="dialog"
-  >
-    <div
-      class="modal__inner"
-    >
-      <button>
-        Previous
-      </button>
-      <p>
-        second modal
-      </p>
-      <button>
-        Next
-      </button>
-      <button>
-        Close
-      </button>
-    </div>
-  </div>
-  <div
-    animation="out-right-end"
-    aria-hidden="true"
-    class="modal"
-    role="dialog"
-  >
-    <div
-      class="modal__inner"
-    >
-      <button>
-        Previous
-      </button>
-      <p>
-        third modal
-      </p>
-      <button>
-        Next
-      </button>
-      <button>
-        Close
-      </button>
-    </div>
-  </div>
-  <div
-    animation="out-right-end"
-    aria-hidden="true"
-    class="modal"
-    role="dialog"
-  >
-    <div
-      class="modal__inner"
-    >
-      <button>
-        Previous
-      </button>
-      <p>
-        3
-      </p>
-      <button>
-        Next
-      </button>
-      <button>
-        Close
-      </button>
-    </div>
-  </div>
-  <div
-    animation="out-right-end"
-    aria-hidden="true"
-    class="modal"
-    role="dialog"
-  >
-    <div
-      class="modal__inner"
-    >
-      <button>
-        Previous
-      </button>
-      <p>
-        4
-      </p>
-      <button>
-        Next
-      </button>
-      <button>
-        Close
-      </button>
-    </div>
+    <button>
+      Previous
+    </button>
+    <p>
+      second modal
+    </p>
+    <button>
+      Next
+    </button>
+    <button>
+      Close
+    </button>
   </div>
 </DocumentFragment>
 `;

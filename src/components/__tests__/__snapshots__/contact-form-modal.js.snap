@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Contact Form Modal renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    animation="in-right"
+    aria-hidden="false"
+    class="modal"
+    role="dialog"
+  >
+    <div
+      class="modal__inner"
+    >
+      <div
+        class="contact-form-modal__close"
+      >
+        <img
+          alt="Close Modal"
+          src="test-file-stub"
+        />
+      </div>
+      <div
+        class="modal__content contact-form-modal__content"
+      >
+        <form
+          class="contact-form-modal__form"
+          data-testid="form"
+          novalidate=""
+        >
+          <div
+            class="input__container"
+          >
+            <label
+              class="label label--input"
+              for="name"
+            >
+              Name
+            </label>
+            <input
+              aria-invalid="false"
+              class="input"
+              id="name"
+              name="name"
+              novalidate=""
+              required=""
+              type="text"
+            />
+          </div>
+          <div
+            class="input__container"
+          >
+            <label
+              class="label label--input"
+              for="email"
+            >
+              Email
+            </label>
+            <input
+              aria-invalid="false"
+              class="input"
+              id="email"
+              name="email"
+              novalidate=""
+              required=""
+              type="email"
+            />
+          </div>
+          <div
+            class="input__container"
+          >
+            <label
+              class="label label--input"
+              for="message"
+            >
+              Your Message
+            </label>
+            <textarea
+              aria-invalid="false"
+              class="textarea"
+              id="message"
+              name="message"
+              novalidate=""
+              required=""
+            />
+          </div>
+          <div
+            class="checkbox-container"
+          >
+            <div
+              class="checkbox "
+            >
+              <input
+                aria-invalid="false"
+                class="checkbox__input"
+                id="terms"
+                type="checkbox"
+                value="terms"
+              />
+              <label
+                class="checkbox__label"
+                for="terms"
+              >
+                I agree for my email to be stored for the purposes of being contacted back by Chris
+              </label>
+            </div>
+          </div>
+          <input
+            class="btn btn__primary contact-form-modal__submit"
+            type="submit"
+          />
+        </form>
+      </div>
+    </div>
+  </div>
+  <div
+    animation="toast-out-end"
+    class="toast toast--success"
+    role="alert"
+  >
+    <p />
+  </div>
+</DocumentFragment>
+`;

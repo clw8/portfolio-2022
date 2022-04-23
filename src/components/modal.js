@@ -29,7 +29,7 @@ const Modal = (props) => {
   };
 
   useEffect(() => {
-    if (initialLoad) {
+    if (initialLoad && !show) {
       setInitialLoad(false);
     } else {
       show ? openModal() : closeModal();

@@ -26,7 +26,6 @@ function ContactFormModal(props) {
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const onSubmit = (data, e) => {
-    console.log(e)
     setIsSubmitting(true)
     delete data.terms; // not needed
 

@@ -13,7 +13,6 @@ const ProjectModal = (props) => {
     goToNext,
     goToPrevious,
     exitModalSequence,
-    goBackInModalHistory,
     show,
     prevShowIndex,
     showIndex,
@@ -49,19 +48,12 @@ const ProjectModal = (props) => {
     img.src = datum.modalImage;
   }, []);
 
-  const onClose = (event) => {
-    // if there is an event, we know we want to go back in the sequence history
-    if (event) {
-      goBackInModalHistory();
-    }
-  };
-
   return (
     <Modal
       animations={animations}
       style={{ background: datum.background }}
       show={show}
-      onClose={onClose}
+      usePopState={false}
     >
       <Fragment>
         <div
@@ -117,7 +109,6 @@ ProjectModal.propTypes = {
   goToNext: PropTypes.func,
   goToPrevious: PropTypes.func,
   exitModalSequence: PropTypes.func,
-  goBackInModalHistory: PropTypes.func,
   show: PropTypes.bool,
   prevShowIndex: PropTypes.number,
   showIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),

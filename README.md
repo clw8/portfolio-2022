@@ -1,5 +1,5 @@
 ## Portfolio site
-This portfolio site was created in April 2022. Hopefully this provides a good example to how I would normally go about developing apps. I spent some time on component reusability and decoupling, and the file structure is similar to what I would normally use on a project. For showcasing a bit of testing knowledge, I've included a small folder on unit testing, using jest and react testing library (for the sake of time I've left out E2E though I may add it at a future date).
+This portfolio site was created in April 2022. Hopefully this provides a good example to how I would normally go about developing apps. I spent some time on component reusability and decoupling, and the file structure is similar to what I would normally use on a project. To showcase a bit of testing knowledge, I've included a small folder on unit testing, using jest and react testing library (for the sake of time I've left out E2E though I may add it at a future date).
 
 
 <p align="center">

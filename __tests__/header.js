@@ -1,7 +1,7 @@
 import React from "react"
 import {fireEvent, render } from '@testing-library/react';
 
-import Header from "../header.js"
+import Header from "../src/components/header"
 
 describe("Header", () => {
   let header;

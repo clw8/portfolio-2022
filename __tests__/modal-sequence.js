@@ -1,9 +1,9 @@
 import {act } from '@testing-library/react';
 import React, {useState} from "react"
 
-import ModalSequence from "../modal-sequence"
+import ModalSequence from "../src/components/modal-sequence"
 // import Modal from '../modal';
-import getInstance from '../../utils/test-utils/get-instance';
+import getInstance from '../src/utils/test-utils/get-instance';
 import "@testing-library/jest-dom"
 
 const MockModal = ({show, children}) => {
@@ -32,11 +32,11 @@ const createRenderInstanceAtIndex = (startingIndex) => {
 describe("Modal Sequence", () => {
   let renderInstance;
   
-  beforeEach(() => {
+  beforeAll(() => {
+    renderInstance = createRenderInstanceAtIndex(1);
   })
   
   it("renders correctly", () => {
-    renderInstance = createRenderInstanceAtIndex(1);
     expect(renderInstance.container).toBeInTheDocument()
     const firstRender = renderInstance.asFragment()
     expect(firstRender).toMatchSnapshot()

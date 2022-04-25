@@ -2,8 +2,8 @@ import { cleanup, fireEvent, render, act } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import React, { useEffect } from "react";
 
-import ToastProvider from "../../context-providers/toast-provider";
-import { useToast } from "../../hooks";
+import ToastProvider from "../src/context-providers/toast-provider";
+import { useToast } from "../src/hooks";
 
 const Layout = ({ children }) => {
   return (

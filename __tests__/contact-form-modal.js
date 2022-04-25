@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { fireEvent, render, act } from "@testing-library/react";
+import React from "react";
+import { fireEvent, render } from "@testing-library/react";
 
-import ContactFormModal from "../contact-form-modal";
-import ToastProvider from "../../context-providers/toast-provider";
+import ContactFormModal from "../src/components/contact-form-modal";
+import ToastProvider from "../src/context-providers/toast-provider";
 import axios from "axios"
 
 const ContactFormPage = ({ show }) => {

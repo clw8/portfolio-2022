@@ -64,6 +64,11 @@ const MainLayout = (props) => {
       setTimeout(() => {
         document.body.classList.remove("body--no-scroll");
 
+        if (window.location.hash) {
+          const hash = window.location.hash.replace("#", "")
+          document.getElementById(hash).scrollIntoView({ block: "start", behavior: "smooth" });
+        }
+
         window.onbeforeunload = function () {
           window.scrollTo(0, 0);
         };

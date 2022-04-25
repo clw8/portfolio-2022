@@ -172,7 +172,7 @@ const IndexPage = ({ createTyped }) => {
               <p>
                 And get in contact with me{" "}
                 <a
-                  href="#"
+                  href="#contact"
                   onClick={openContactForm}
                   onMouseEnter={() => createTyped("mail")}
                   onMouseLeave={() => createTyped("")}

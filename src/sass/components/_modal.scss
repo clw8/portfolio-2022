@@ -121,13 +121,18 @@
 
   &__text {
     width: 100%;
-    max-width: 480px;
+    max-width: 520px;
     margin: auto;
 
     @include mq("desktop") {
       max-width: 40vw;
       min-width: 480px;
-      max-width: 540px;
+      max-width: 600px;
+    }
+
+    @include mq("desktop-mid") {
+      max-width: 52vw;
+      min-width: 480px;
     }
 
     h3 {
@@ -226,6 +231,8 @@
     position: absolute;
     top: 3.25rem;
     cursor: pointer;
+    opacity: 0.7;
+
 
     @include mq("tablet-small") {
       top: 3.75rem;
@@ -240,12 +247,22 @@
       left: 2rem;
       transform: rotate(180deg);
       transform-origin: center;
+
+
+      &:hover {
+        opacity: 1;
+        transform: scale(1.01) rotate(180deg);
+      }
     }
 
     &--right {
       right: 2rem;
       @include mq("tablet") {
         left: calc(100% - 4rem - 1.5rem);
+      }
+
+      &:hover {
+        opacity: 1;
       }
     }
   }

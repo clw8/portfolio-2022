@@ -110,7 +110,6 @@ const IndexPage = ({ createTyped }) => {
 
               <div className="content__flex">
                 <a
-                  role="none"
                   href="#projects"
                   className="scroll-p"
                   onClick={onClickHashScrollTo}
@@ -123,6 +122,7 @@ const IndexPage = ({ createTyped }) => {
                     data-prefix="fal"
                     data-icon="arrow-down"
                     role="img"
+                    alt="scroll to projects section"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 448 512"
                   >

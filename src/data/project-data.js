@@ -59,7 +59,7 @@ const projectData = [
         </p>
         <h3>Have a look for yourself</h3>
         <a
-          className="icon-flex icon-flex__website"
+          className="icon-flex icon-flex__website text-link"
           target="_blank"
           rel="noreferrer"
           href="https://www.redbullsoundsupply.com"
@@ -137,7 +137,7 @@ const projectData = [
           </a>
         </div>
         <a
-          className="icon-flex icon-flex__website icon-flex__website--cn"
+          className="icon-flex icon-flex__website text-link icon-flex__website--cn"
           href="https://www.classninjas.com/app"
           target="_blank"
           rel="noreferrer"
@@ -217,7 +217,7 @@ const projectData = [
         </ul>
         <h3>Have a look for yourself</h3>
         <a
-          className="icon-flex icon-flex__website icon-flex__website--neoh"
+          className="icon-flex icon-flex__website text-link icon-flex__website--neoh"
           href="https://www.neoh.com/de-de"
           target="_blank"
           rel="noreferrer"
@@ -269,7 +269,7 @@ const projectData = [
         <h3>Have a look for yourself</h3>
         <p>
           <a
-            className="icon-flex icon-flex__website"
+            className="icon-flex icon-flex__website text-link"
             href="https://www.hisharethat.com"
             target="_blank"
             rel="noreferrer"
@@ -323,7 +323,7 @@ const projectData = [
         </div>
         <h3>Have a look for yourself</h3>
         <a
-          className="icon-flex icon-flex__website"
+          className="icon-flex icon-flex__website text-link"
           href="https://www.sarahhouben.com"
           target="_blank"
           rel="noreferrer"
@@ -371,7 +371,7 @@ const projectData = [
 
         <h3>Have a look for yourself</h3>
         <a
-          className="icon-flex icon-flex__website"
+          className="icon-flex icon-flex__website text-link"
           href="https://www.rikahemmi.jp"
           target="_blank"
           rel="noreferrer"
@@ -381,7 +381,7 @@ const projectData = [
         </a>
         <br />
         <a
-          className="icon-flex icon-flex__website"
+          className="icon-flex icon-flex__website text-link"
           href="https://www.soseisoudou.jp"
           target="_blank"
           rel="noreferrer"

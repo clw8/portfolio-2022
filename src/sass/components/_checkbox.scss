@@ -7,6 +7,11 @@
   line-height: 1rem;
   white-space: pre-line;
   hyphens: auto;
+  transition: transform 0.07s ease-out;
+
+  &:active {
+    transform: translate(1px, 1px);
+  }
 
   &--error {
     & .checkbox__label {

@@ -5,7 +5,6 @@ import ChrisResumePDF from "../images/Christopher_Walsh_CV.pdf";
 import { useScrollTo } from "../hooks";
 import PropTypes from 'prop-types'
 
-
 const Header = (props) => {
   const { onMouseEnter, onMouseOut, show } = props
   const { onClickHashScrollTo } = useScrollTo()

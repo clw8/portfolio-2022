@@ -2,22 +2,31 @@ header {
   @include grid-wrapper;
   // height: var(--nav-height);
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: flex-start;
   padding-top: 1.5rem;
   padding-bottom: 2rem;
+  z-index: 1;
+  position: relative;
+
+  @include mq("desktop") {
+    padding-top: 2rem;
+  }
 }
 
 nav {
   // height: var(--nav-height);
-  width: 100%;
   display: flex;
   justify-content: flex-end;
   flex-wrap: wrap;
-  padding: 0px 0rem 24px;
-
+  padding: 0rem 0rem 24px;
+  // position: fixed;
+  // top: 0;
+  // right: $grid-o-gutter--mob;
+  // z-index: 2;
+  
   @include mq('tablet') {
-    padding: 0px 2rem 28px;
+    padding: 0.5rem 2rem 28px;
   }
 
   a {
@@ -28,9 +37,13 @@ nav {
     font-size: 0.8rem;
     text-transform: uppercase;
     opacity: 0.7;
-
+    
     &:hover {
       opacity: 0.9;
+    }
+    
+    &:active {
+      opacity: 0.7;
     }
     
     &:first-child {

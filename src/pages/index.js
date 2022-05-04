@@ -52,9 +52,13 @@ const IndexPage = ({ createTyped }) => {
     }
   };
 
-  const closeContactForm = () => setShowContactFormModal(false);
+  const closeContactForm = () => {
+    setAnimation(0);
+    setShowContactFormModal(false);
+  }
 
   const openContactForm = (event) => {
+    setAnimation(1);
     event.preventDefault();
     setShowContactFormModal(true);
   };
@@ -99,7 +103,7 @@ const IndexPage = ({ createTyped }) => {
                 </p>
                 <p>
                   If this sounds like someone you want to work with, please{" "}
-                  <a href="#contact" onClick={openContactForm}>
+                  <a className="text-link" href="#contact" onClick={openContactForm}>
                     get in touch
                   </a>
                   . Currently, I'm looking for work in London, so if I've just
@@ -160,7 +164,7 @@ const IndexPage = ({ createTyped }) => {
               <p>
                 Let's discuss what you need and what I can offer. Please find my
                 resume{" "}
-                <a
+                <a className="text-link" 
                   href={ChrisResumePDF}
                   onMouseEnter={() => createTyped("resume")}
                   onMouseLeave={() => createTyped("")}
@@ -171,7 +175,7 @@ const IndexPage = ({ createTyped }) => {
               </p>
               <p>
                 And get in contact with me{" "}
-                <a
+                <a className="text-link" 
                   href="#contact"
                   onClick={openContactForm}
                   onMouseEnter={() => createTyped("mail")}

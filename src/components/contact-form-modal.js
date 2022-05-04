@@ -50,7 +50,7 @@ function ContactFormModal(props) {
   };
 
   return (
-    <Modal show={show} onClose={onClose} className="contact-form-modal">
+    <Modal show={show} onClose={onClose} className="contact-form-modal" animations={{in: "initial-in-right", inEnd: "in-right-end", out: "initial-out-right", outEnd: "out-right-end" }}>
       <Fragment>
         <div className="contact-form-modal__close" onClick={onCloseIconClick}>
           <img src={CloseIcon} alt="Close Modal" />

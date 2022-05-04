@@ -11,6 +11,7 @@
 
   &:active {
     transform: scale(0.98);
+    transform: scale(0.99) translate(1px, 1px);
   }
 
   &__no-style {

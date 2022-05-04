@@ -1,9 +1,14 @@
 .input__container {
   position: relative;
   margin-bottom: 1rem;
-
+  
   &:last-child {
     margin-bottom: 0;
+  }
+  
+  
+  @include mq("desktop-mid") {
+    margin-bottom: 1.5rem;
   }
 }
 
@@ -16,10 +21,13 @@
   color: $color-secondary;
   padding: .5rem 1rem;
   width: 100%;
-
+  transform: scale(0.99) translateY(2px) translateX(-1px);
+  transition: transform 0.15s ease;
+  
   &:focus {
     border: 1px solid $color-secondary;
     outline: none;
+    transform: scale(1);
   }
 
   &--error {

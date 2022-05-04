@@ -10,6 +10,7 @@
 
 .body {
   -webkit-overflow-scrolling: touch;
+  background: rgb(246 242 242);
 
   &--no-scroll {
     -webkit-overflow-scrolling: auto;

@@ -23,13 +23,26 @@ const ProjectModal = (props) => {
     typeof prevShowIndex === "undefined" || showIndex > prevShowIndex;
   const transitionRightOut =
     typeof prevShowIndex === "undefined" || showIndex <= prevShowIndex;
+  let animations;
+  console.log("ss", typeof prevShowIndex === "undefined")
+  if (typeof prevShowIndex === "undefined") {
+    console.log("here")
+    animations = {
+      in: "initial-in-right",
+      inEnd: "in-right-end",
+      out: "initial-out-right",
+      outEnd: "out-right-end",
+    };
+  } else {
+    animations = {
+     in: transitionRightIn ? "in-right" : "in-left",
+     inEnd: transitionRightIn ? "in-right-end" : "in-left-end",
+     out: transitionRightOut ? "out-right" : "out-left",
+     outEnd: transitionRightOut ? "out-right-end" : "out-left-end",
+   };
+  }
 
-  const animations = {
-    in: transitionRightIn ? "in-right" : "in-left",
-    inEnd: transitionRightIn ? "in-right-end" : "in-left-end",
-    out: transitionRightOut ? "out-right" : "out-left",
-    outEnd: transitionRightOut ? "out-right-end" : "out-left-end",
-  };
+  console.log(animations)
 
   const onCloseIconClick = () => {
     exitModalSequence && exitModalSequence();

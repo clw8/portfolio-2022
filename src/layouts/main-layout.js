@@ -4,7 +4,6 @@ import Typed from "typed.js";
 import ProfileImage from "../images/main-image.jpg";
 import { Helmet } from "react-helmet";
 import { throttle } from "../utils";
-import Fade from "react-reveal/Fade";
 import ToastProvider from "../context-providers/toast-provider";
 
 import * as Favicons from "../images/favicons";
@@ -112,7 +111,7 @@ const MainLayout = (props) => {
       window.removeEventListener("load", handleLoad);
       document.removeEventListener("scroll", scrollHandler, { passive: true });
     };
-  }, []);
+  }, [showScrollIcon]);
 
   const childrenWithProps = React.Children.map(children, (child) => {
     // Checking isValidElement is the safe way and avoids a typescript
@@ -127,7 +126,7 @@ const MainLayout = (props) => {
   });
 
   const onClickScrollTop = () => {
-    document.body.scrollIntoView({ behaviour: "smooth" });
+    document.body.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -173,9 +172,8 @@ const MainLayout = (props) => {
       <p role="presentation" ref={typedRef} className="sync-text"></p>
 
       {/* scroll up arrow */}
-      <Fade bottom distance={"20px"} duration={1000} when={showScrollIcon}>
         <div
-          className="icon icon__scroll-top"
+          className={"icon icon__scroll-top" + (showScrollIcon ? " show" : "")}
           role="none"
           onClick={onClickScrollTop}
         >
@@ -195,7 +193,6 @@ const MainLayout = (props) => {
             ></path>
           </svg>
         </div>
-      </Fade>
 
       <Loader show={!showPageFirstLoad}></Loader>
     </div>

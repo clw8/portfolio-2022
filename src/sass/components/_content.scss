@@ -12,19 +12,23 @@
 
 @keyframes contentHideAnimation {
   0% {
-    transform: translateX(-100%);
+    transform: translateX(-40px);
+    opacity: 0;
   }
-
+  
   15% {
-    transform: translateX(-101%);
+    // transform: translateX(-101%);
+    opacity: 0.3;
   }
-
+  
   85% {
-    transform: translateX(2%);
+    // transform: translateX(2%);
+    opacity: 0.88;
   }
-
+  
   100% {
     transform: translateX(0);
+    opacity: 1;
   }
 }
 
@@ -102,6 +106,10 @@
       padding: 2rem 6rem;
     }
 
+    @include mq("desktop-mid") {
+      padding: 2.5rem 10vw;
+    }
+
     &--border {
       position: relative;
       margin-bottom: 1rem;
@@ -142,6 +150,7 @@
     .scroll-p {
       display: flex;
       opacity: 0.6;
+      transition: transform 0.06s ease-out;
 
       p {
         margin-right: 1.5rem;
@@ -155,6 +164,10 @@
 
       svg {
         pointer-events: none;
+      }
+
+      &:active {
+        transform: translate(1px, 1px);
       }
     }
 
@@ -230,8 +243,15 @@
 .footer-image {
   width: 100%;
   max-height: 66vh;
+  width: 100%;
   object-fit: cover;
   object-position: top;
+
+  cursor: url("../images/001-lotus-cropped.png"), auto;
+
+  @include mq("desktop-mid") {
+    object-position: 0% 14%;
+  }
 }
 
 .contact-icon {

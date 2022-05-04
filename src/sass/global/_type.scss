@@ -36,6 +36,7 @@ h1,
   line-height: 2.5rem;
   letter-spacing: -0.04rem;
   opacity: 0.96;
+  cursor: default;
 
   @include mq('tablet-small') {
     line-height: 135%;
@@ -132,6 +133,29 @@ a {
   outline: none;
   line-height: 100%;
   color: $color-primary;
+  position: relative;
+
+  &.text-link {
+    &:hover {
+      // text-decoration: underline;
+      opacity: 0.76;
+    }
+    
+    &:active:after {
+      background: lightpink;
+    }
+    
+    &:after {
+      content: "";
+      border-radius: 4px;
+      position: absolute;
+      top: -2px;
+      bottom: -2px;
+      left: -2px;
+      right: -2px;
+      z-index: -1;
+    } 
+  }
 }
 
 strong {

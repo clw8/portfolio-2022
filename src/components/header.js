@@ -1,5 +1,5 @@
 import * as React from "react"
-import ProfileImage from "../images/main-image.jpeg"
+import ProfileImage from "../images/main-image.jpg"
 import Fade from 'react-reveal/Fade';
 import ChrisResumePDF from "../images/Christopher_Walsh_CV.pdf";
 import { useScrollTo } from "../hooks";

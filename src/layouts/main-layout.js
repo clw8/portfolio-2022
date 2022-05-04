@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Header, Loader } from "../components";
 import Typed from "typed.js";
-import ProfileImage from "../images/main-image.jpeg";
+import ProfileImage from "../images/main-image.jpg";
 import { Helmet } from "react-helmet";
 import { throttle } from "../utils";
 import Fade from "react-reveal/Fade";
